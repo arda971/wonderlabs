@@ -70,7 +70,7 @@ passport.deserializeUser((userDataFromCookie, done) => {
   done(null, userDataFromCookie);
 });
 
-/*
+
 // Checks if a user is logged in
 const accessProtectionMiddleware = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -83,13 +83,13 @@ const accessProtectionMiddleware = (req, res, next) => {
 };
 
 // A secret endpoint accessible only to logged-in users
-app.get('/protected', accessProtectionMiddleware, (req, res) => {
+app.get('/users', accessProtectionMiddleware, (req, res) => {
   res.json({
     message: 'You have accessed the protected endpoint!',
     yourUserInfo: req.user,
   });
 });
-*/
+
 
 /* GOOGLE ROUTER*/
 
@@ -101,7 +101,7 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/', session: true }),
   (req, res) => {
     console.log('wooo we authenticated, here is our user object:', req.user);
-    res.json(req.user);
+    //res.json(req.user);
     res.redirect('/');
   }
 );

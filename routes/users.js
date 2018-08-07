@@ -14,7 +14,7 @@ const accessProtectionMiddleware = (req, res, next) => {
 };
 
 // A secret endpoint accessible only to logged-in users
-router.get('/', accessProtectionMiddleware, (req, res) => {
+router.get('/protected', accessProtectionMiddleware, (req, res) => {
   res.json({
     message: 'You have accessed the protected endpoint!',
     yourUserInfo: req.user,
