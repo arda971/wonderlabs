@@ -94,7 +94,7 @@ router.get('/google/callback',
 
 
 router.get('/register', (req, res) => {
-    res.render('register', { });
+    res.render('register', { title: 'Please Sign In with:'});
 });
 
 router.post('/register', (req, res, next) => {
