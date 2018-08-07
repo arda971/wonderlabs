@@ -4,6 +4,10 @@ var router = express.Router();
 //const passportGoogle = require('../controller/googleAuth');
 const User = require('../models/User');
 
+var config = require('./config');
+
+
+
 
 var passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
