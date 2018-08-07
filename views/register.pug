@@ -2,14 +2,19 @@ extends layout
 
 block content
   .container
-    h1.display-4.m-b-2= title
-    p.lead Say something worthwhile here.
-    div: form(method='post', class='form-vertical')
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2= title
+      div: form(method='post', class='form-vertical')
         fieldset
-         legend: strong.text-info Login page
+
           div.form-group
             label Username:
             input.form-control(name='username', value='', autofocus)
+
+          div.form-group
+            label Email:
+            input.form-control(email='email', type='email')
+
 
           div.form-group
             label Password:

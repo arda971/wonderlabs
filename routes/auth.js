@@ -53,7 +53,25 @@ router.get('/loginusr', function(req, res, next) {
 
 /* REGISTER  ROUTER */
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'New User' });
+  res.render('register', { title: 'Register  New User' });
+});
+
+
+router.post('/register', (req, res, next) => {
+    User.register(new User({ name : req.body.username }), req.body.password, (err, user) => {
+        if (err) {
+          return res.render('register', { error : err.message });
+        }
+
+        passport.authenticate('local')(req, res, () => {
+            req.session.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                res.redirect('/');
+            });
+        });
+    });
 });
 
 /* LOGOUT ROUTER */
@@ -93,26 +111,8 @@ router.get('/google/callback',
 */
 
 
-router.get('/register', (req, res) => {
-    res.render('register', { title: 'Please Sign In with:'});
-});
 
-router.post('/register', (req, res, next) => {
-    User.register(new User({ name : req.body.username }), req.body.password, (err, user) => {
-        if (err) {
-          return res.render('register', { error : err.message });
-        }
 
-        passport.authenticate('local')(req, res, () => {
-            req.session.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                res.redirect('/');
-            });
-        });
-    });
-});
 
 
 
