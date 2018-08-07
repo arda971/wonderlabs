@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const passport = require('passport');
 
 var app = express();
 
