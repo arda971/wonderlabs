@@ -3,3 +3,6 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  a.btn.btn-danger(href='/auth/login') Login
+  br
+  a.btn.btn-danger(href='/protected') Go To Protected Endpoint
