@@ -36,10 +36,11 @@ router.get('/google', passportGoogle.authenticate('google',{ scope: 'https://www
 // This is where Google sends users once they authenticate with Google
 // Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
 router.get('/google/callback',
-  passportGoogle.authenticate('google', { failureRedirect: '/', session: false }),
+  passportGoogle.authenticate('google', { failureRedirect: '/', session: true }),
   (req, res) => {
     console.log('wooo we authenticated, here is our user object:', req.user);
-    res.json(req.user);
+  //  res.json(req.user);
+    res.redirect('/');
   }
 );
 

@@ -29,7 +29,7 @@ app.use('/users', usersRouter);
 app.use('/auth', auth);
 
 
-
+/*
 // Set up passport strategy
 passport.use(new GoogleStrategy(
   {
@@ -45,7 +45,7 @@ passport.use(new GoogleStrategy(
   },
 ));
 
-
+*/
 
 
 // Add session support
@@ -70,7 +70,7 @@ passport.deserializeUser((userDataFromCookie, done) => {
   done(null, userDataFromCookie);
 });
 
-
+/*
 // Checks if a user is logged in
 const accessProtectionMiddleware = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -89,7 +89,7 @@ app.get('/protected', accessProtectionMiddleware, (req, res) => {
     yourUserInfo: req.user,
   });
 });
-
+*/
 
 /* GOOGLE ROUTER
 
