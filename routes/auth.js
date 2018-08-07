@@ -29,7 +29,7 @@ router.get('/facebook/callback',
 
 
 
-/* GOOGLE ROUTER*/
+/* GOOGLE ROUTER
 
 router.get('/google', passportGoogle.authenticate('google'));
 
@@ -44,7 +44,7 @@ router.get('/google/callback',
   }
 );
 
-
+*/
 
 
 
