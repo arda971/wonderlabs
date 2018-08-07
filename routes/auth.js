@@ -67,10 +67,12 @@ router.get('/register', function(req, res, next) {
 
 
 router.post('/register', (req, res, next) => {
-    User.save(req.body, (err, user) => {
-        if (err) {
-          return res.render('register', { error : err.message });
-        }
+
+        User.findOrCreate({name: req.body.name}, {name: req.body.name,userid: req.body.userid,email: req.body.email}, function(err, user) {
+          if (err) { return done(err); }
+          done(null, user);
+        });
+
 
         passport.authenticate('local')(req, res, () => {
             req.session.save((err) => {
