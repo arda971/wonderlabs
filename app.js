@@ -40,7 +40,7 @@ passport.use(new GoogleStrategy(
   },
   // This is a "verify" function required by all Passport strategies
   (accessToken, refreshToken, profile, cb) => {
-    console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
+  //  console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
     return cb(null, profile);
   },
 ));
@@ -93,7 +93,7 @@ app.get('/protected', accessProtectionMiddleware, (req, res) => {
 
 /* GOOGLE ROUTER */
 
-app.get('/auth/google', passport.authenticate('google',{ scope: 'https://www.googleapis.com/auth/plus.login' }));
+app.get('/auth/google', passport.authenticate('google'));
 
 // This is where Google sends users once they authenticate with Google
 // Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
