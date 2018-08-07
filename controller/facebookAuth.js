@@ -11,7 +11,7 @@ passport.use(new FacebookStrategy({
     console.log('Our user authenticated with Facebook, and Facebook sent us back this profile info identifying the authenticated user:', profile);
     return done(null, profile);
   },
-  }
+  
 ));
 
 module.exports = passport;
