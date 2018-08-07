@@ -83,7 +83,7 @@ router.post('/register', (req, res, next) => {
             });
         });
     });
-});
+
 
 /* LOGOUT ROUTER */
 router.get('/logout', function(req, res){
