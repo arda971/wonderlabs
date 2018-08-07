@@ -1,8 +1,45 @@
 var express = require('express');
 var router = express.Router();
-const passportFacebook = require('../controller/facebookAuth');
-const passportGoogle = require('../controller/googleAuth');
+//const passportFacebook = require('../controller/facebookAuth');
+//const passportGoogle = require('../controller/googleAuth');
 const User = require('../models/User');
+
+
+var passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+
+
+// Set up passport strategy
+passport.use(new GoogleStrategy(
+  {
+    clientID: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
+    callbackURL: 'https://wonder971.herokuapp.com/auth/google/callback',
+    scope: ['email'],
+  },
+  // This is a "verify" function required by all Passport strategies
+  (accessToken, refreshToken, profile, cb) => {
+    //console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
+    return cb(null, profile);
+  },
+));
+
+
+
+
+
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_OAUTH_TEST_APP_CLIENT_ID,
+  clientSecret: process.env.FACEBOOK_OAUTH_TEST_APP_CLIENT_SECRET,
+  callbackURL: "https://wonder971.herokuapp.com/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  console.log('Our user authenticated with Facebook, and Facebook sent us back this profile info identifying the authenticated user:', profile);
+  return done(null, profile);
+},
+
+));
 
 /* LOGIN ROUTER */
 router.get('/login', function(req, res, next) {
@@ -27,10 +64,10 @@ router.get('/logout', function(req, res){
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
-  passportFacebook.authenticate('facebook'));
+  passport.authenticate('facebook'));
 
 router.get('/facebook/callback',
-  passportFacebook.authenticate('facebook', { failureRedirect: '/auth/login' }),
+  passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
