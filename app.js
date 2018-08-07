@@ -70,7 +70,7 @@ passport.deserializeUser((userDataFromCookie, done) => {
   done(null, userDataFromCookie);
 });
 
-
+/*
 // Checks if a user is logged in
 const accessProtectionMiddleware = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -83,7 +83,7 @@ const accessProtectionMiddleware = (req, res, next) => {
 };
 
 // A secret endpoint accessible only to logged-in users
-app.get('/users', accessProtectionMiddleware, (req, res) => {
+app.get('/users ', accessProtectionMiddleware, (req, res) => {
   res.json({
     message: 'You have accessed the protected endpoint!',
     yourUserInfo: req.user,
