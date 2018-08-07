@@ -12,7 +12,7 @@ var auth = require('./routes/auth');
 var passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
-var config = require('./config');
+
 
 
 var app = express();
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-mongoose.connect(config.mongoUrl);
+mongoose.connect(process.env.MongoURI);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
