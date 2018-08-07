@@ -7,13 +7,17 @@ block content
       div: form(method='post', class='form-vertical')
         fieldset
 
+         div.form-group
+          label Name:
+          input.form-control(name='name', value='', autofocus)
+
           div.form-group
-            label Username:
-            input.form-control(name='username', value='', autofocus)
+            label UserId:
+            input.form-control(name='userid',placeholder='Please enter a userId')
 
           div.form-group
             label Email:
-            input.form-control(email='email', type='email')
+            input.form-control(email='email', type='email', placeholder='Please your email')
 
 
           div.form-group

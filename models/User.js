@@ -4,6 +4,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const UserSchema = new mongoose.Schema({
   name: String,
   userid: String,
+  email: String,
+  
   updated_at: { type: Date, default: Date.now },
 });
 

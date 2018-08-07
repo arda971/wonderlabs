@@ -47,8 +47,17 @@ router.get('/login', function(req, res, next) {
 });
 
 /* LOGIN USR ROUTER */
-router.get('/loginusr', function(req, res, next) {
-      res.render('loginusr', { title: 'Please Sign '});
+router.get('/signin', function(req, res, next) {
+      res.render('signin', { title: 'Please Sign In '});
+});
+
+router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res, next) => {
+    req.session.save((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
+    });
 });
 
 /* REGISTER  ROUTER */
@@ -58,7 +67,7 @@ router.get('/register', function(req, res, next) {
 
 
 router.post('/register', (req, res, next) => {
-    User.register(new User({ name : req.body.username }), req.body.password, (err, user) => {
+    User.register(new User({ name : req.body.username, userid: req.body.userid, email: req.body.email }), req.body.password, (err, user) => {
         if (err) {
           return res.render('register', { error : err.message });
         }
