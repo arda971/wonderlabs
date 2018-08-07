@@ -4,7 +4,7 @@ var router = express.Router();
 //const passportGoogle = require('../controller/googleAuth');
 const User = require('../models/User');
 
-var config = require('./config');
+
 
 
 
