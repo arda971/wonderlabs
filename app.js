@@ -91,7 +91,7 @@ app.get('/protected', accessProtectionMiddleware, (req, res) => {
 });
 
 
-/* GOOGLE ROUTER */
+/* GOOGLE ROUTER
 
 app.get('/auth/google', passport.authenticate('google'));
 
@@ -105,7 +105,7 @@ app.get('/auth/google/callback',
       res.redirect('/');
   }
 );
-
+*/
 
 
 
