@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 // Checks if a user is logged in
-const accessProtectionMiddleware = (req, res, next) {
+const accessProtectionMiddleware = function(req, res, next) {
   if (req.isAuthenticated()) {
     next();
   } else {
