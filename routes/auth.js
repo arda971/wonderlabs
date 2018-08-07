@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passportFacebook = require('../controller/facebookAuth');
-var passportGoogle = require('../controller/googleAuth');
+//var passportGoogle = require('../controller/googleAuth');
 
 
 /* LOGIN ROUTER */
@@ -29,7 +29,7 @@ router.get('/facebook/callback',
 
 
 
-/* GOOGLE ROUTER */
+/* GOOGLE ROUTER
 
 router.get('/auth/google', passportGoogle.authenticate('google',{ scope: 'https://www.googleapis.com/auth/plus.login' }));
 
@@ -41,7 +41,7 @@ router.get('/auth/google/callback',
     console.log('wooo we authenticated, here is our user object:', req.user);
     res.json(req.user);
   }
-);
+);*/
 
 
 

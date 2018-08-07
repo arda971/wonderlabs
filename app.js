@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var auth = require('./routes/auth');
 
 var passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 var app = express();
 
@@ -28,7 +29,35 @@ app.use('/auth', auth);
 
 
 
+// Set up passport strategy
+passport.use(new GoogleStrategy(
+  {
+    clientID: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
+    callbackURL: 'https://wonder971.herokuapp.com/auth/google/callback',
+    scope: ['email'],
+  },
+  // This is a "verify" function required by all Passport strategies
+  (accessToken, refreshToken, profile, cb) => {
+    console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
+    return cb(null, profile);
+  },
+));
 
+
+/* GOOGLE ROUTER */
+
+app.get('/auth/google', passportGoogle.authenticate('google',{ scope: 'https://www.googleapis.com/auth/plus.login' }));
+
+// This is where Google sends users once they authenticate with Google
+// Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
+app.get('/auth/google/callback',
+  passportGoogle.authenticate('google', { failureRedirect: '/', session: false }),
+  (req, res) => {
+    console.log('wooo we authenticated, here is our user object:', req.user);
+    res.json(req.user);
+  }
+);
 
 
 
