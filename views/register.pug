@@ -5,12 +5,25 @@ block content
     h1.display-4.m-b-2= title
     p.lead Say something worthwhile here.
     br
-    form(role='form', action="/register",method="post", style='max-width: 300px;')
-      .form-group
-          input.form-control(type='text', name="username", placeholder='Enter Username')
-      .form-group
-        input.form-control(type='password', name="password", placeholder='Password')
-      button.btn.btn-default(type='submit') Submit
-      &nbsp;
-      a(href='/')
-        button.btn.btn-primary(type="button") Cancel
+    div#login.container
+      div: form(method='post', class='form-vertical')
+        fieldset
+          legend: strong.text-info Login page
+
+          if message.error
+            div.alert.alert-danger Missing username or password
+
+          else
+            if message.success
+              div.alert.alert-success You are now connected
+
+          div.form-group
+            label Username:
+            input.form-control(name='username', value=user.username, autofocus)
+
+          div.form-group
+            label Password:
+            input.form-control(name='password', type='password')
+
+          div.form-actions
+            input.btn.btn-primary(type='submit', value='Login')
