@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 // Checks if a user is logged in
-const accessProtectionMiddleware = function(req, res, next) {
+const accessProtectionMiddleware = (req, res, next)=> {
   if (req.isAuthenticated()) {
     next();
   } else {
@@ -14,12 +14,15 @@ const accessProtectionMiddleware = function(req, res, next) {
 };
 
 // A secret endpoint accessible only to logged-in users
-router.get('/protected', accessProtectionMiddleware, function (req, res) {
+router.get('/', accessProtectionMiddleware, (req, res)=> {
   res.json({
     message: 'You have accessed the protected endpoint!',
     yourUserInfo: req.user,
   });
 });
+
+
+
 
 
 

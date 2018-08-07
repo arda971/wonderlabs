@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
+/*
 
 
 // Set up passport strategy
@@ -41,7 +41,7 @@ passport.use(new GoogleStrategy(
   //  console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
     return cb(null, profile);
   },
-));
+));*/
 
 
 

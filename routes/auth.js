@@ -1,14 +1,23 @@
 var express = require('express');
 var router = express.Router();
-var passportFacebook = require('../controller/facebookAuth');
-var passportGoogle = require('../controller/googleAuth');
-
+const passportFacebook = require('../controller/facebookAuth');
+const passportGoogle = require('../controller/googleAuth');
+const User = require('../models/User');
 
 /* LOGIN ROUTER */
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Please Sign In with:' });
 });
 
+/* LOGIN USR ROUTER */
+router.get('/loginusr', function(req, res, next) {
+      res.render('loginusr', { title: 'Please Sign ',user : req.user, error : req.flash('error')});
+});
+
+/* REGISTER  ROUTER */
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'New User' });
+});
 
 /* LOGOUT ROUTER */
 router.get('/logout', function(req, res){
@@ -47,8 +56,50 @@ router.get('/google/callback',
 */
 
 
+router.get('/register', (req, res) => {
+    res.render('register', { });
+});
+
+router.post('/register', (req, res, next) => {
+    User.register(new User({ name : req.body.username }), req.body.password, (err, user) => {
+        if (err) {
+          return res.render('register', { error : err.message });
+        }
+
+        passport.authenticate('local')(req, res, () => {
+            req.session.save((err) => {
+                if (err) {
+                    return next(err);
+                }
+                res.redirect('/');
+            });
+        });
+    });
+});
 
 
+
+
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
+    req.session.save((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
+    });
+});
+
+/*
+router.get('/logout', (req, res, next) => {
+    req.logout();
+    req.session.save((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.redirect('/');
+    });
+});
+*/
 
 
 
