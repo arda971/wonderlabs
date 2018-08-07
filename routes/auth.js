@@ -48,7 +48,7 @@ router.get('/login', function(req, res, next) {
 
 /* LOGIN USR ROUTER */
 router.get('/loginusr', function(req, res, next) {
-      res.render('loginusr', { title: 'Please Sign ',user : req.user, error : req.flash('error')});
+      res.render('loginusr', { title: 'Please Sign '});
 });
 
 /* REGISTER  ROUTER */
