@@ -31,7 +31,7 @@ router.get('/facebook/callback',
 
 /* GOOGLE ROUTER */
 
-router.get('/auth/google', passportGoogle.authenticate('google'));
+router.get('/auth/google', passportGoogle.authenticate('google',{ scope: 'https://www.googleapis.com/auth/plus.login' }));
 
 // This is where Google sends users once they authenticate with Google
 // Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
