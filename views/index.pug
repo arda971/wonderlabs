@@ -5,13 +5,13 @@ block content
   h1= title
   p Welcome to
 
-  if usr
+
     p=user
     br
     a.btn.btn-danger(href='/signin') Logout;
-  else
+
     br
     a.btn.btn-danger(href='/auth/login') Login
 
-  br
-  a.btn.btn-danger(href='/users') Go To Protected Endpoint
+    br
+    a.btn.btn-danger(href='/users') Go To Protected Endpoint
