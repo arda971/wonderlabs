@@ -78,10 +78,11 @@ router.post('/register', (req, res, next) => {
 
  //console.log('req',req);
 
-        User.findOrCreate({ userid: req.body.userid }, { name: req.body.name,userid: req.body.userid,email: req.body.email }, function (err, user) {
+        User.findOrCreate({ userid: req.body.userid }, { name: req.body.name,userid: req.body.userid,email: req.body.email }, function (err, user, created) {
          // if(err) console.log('err',err,'pro',profile);
 
-            return done(err, user);
+           console.log(created);
+                       return  created;
 
 
         });
