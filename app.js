@@ -117,7 +117,8 @@ app.get('/auth/google', passport.authenticate('google'));
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/', session: true }),
   (req, res) => {
-    console.log('wooo we authenticated, here is our user object:', req.user);
+  //  console.log('wooo we authenticated, here is our user object:', req.user);
+
     //res.json(req.user);
     req.session.save();
     res.redirect('/');
