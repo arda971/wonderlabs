@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy(
   // This is a "verify" function required by all Passport strategies
   function(accessToken, refreshToken, profile, done) {
        User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id,email: profile.emails[0].value }, function (err, user) {
-         if(err) console.log('err',err,'pro',profile);
+        // if(err) console.log('err',err,'pro',profile);
            return done(err, user);
 
 
@@ -76,9 +76,14 @@ router.get('/register', function(req, res, next) {
 
 router.post('/register', (req, res, next) => {
 
-        User.findOrCreate({name: req.body.name}, {name: req.body.name,userid: req.body.userid,email: req.body.email}, function(err, user) {
-          if (err) { return done(err); }
-          done(null, user);
+
+
+        User.findOrCreate({ userid: req.body.userid }, { name: req.body.name,userid: req.body.userid,email: req.body.email }, function (err, user) {
+         // if(err) console.log('err',err,'pro',profile);
+         console.log('req',req);
+            return done(err, user);
+
+
         });
 
 
