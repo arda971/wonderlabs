@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 
+var findOrCreate = require('mongoose-findorcreate')
+
 const UserSchema = new mongoose.Schema({
   name: String,
   userid: String,
@@ -10,7 +12,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 //UserSchema.statics.findOrCreate = require("find-or-create");
-UserSchema.statics.findOrCreate = require("mongoose-findorcreate");
-
+//UserSchema.statics.findOrCreate = require("mongoose-findorcreate");
+UserSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', UserSchema);
