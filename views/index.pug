@@ -6,7 +6,7 @@ block content
   p Welcome to #{title}
 
 
-    p= user
+    if(user) p=user.name
     br
     a.btn.btn-info(href='/auth/logout') Logout;
 
