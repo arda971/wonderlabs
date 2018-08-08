@@ -24,7 +24,7 @@ passport.use(new GoogleStrategy(
   },
   // This is a "verify" function required by all Passport strategies
   function(accessToken, refreshToken, profile, done) {
-       User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id }, function (err, user) {
+       User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id,email: profile.emails[0].value }, function (err, user) {
          return done(err, user);
        });
   }
