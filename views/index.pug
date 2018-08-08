@@ -3,10 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  a.btn.btn-danger(href='/auth/login') Login
+
+  if user
+    p {user}
+    br
+    a.btn.btn-danger(href='/signin') Logout;
+  else
+    br
+    a.btn.btn-danger(href='/auth/login') Login
+
   br
   a.btn.btn-danger(href='/users') Go To Protected Endpoint
-  br
-  a.btn.btn-info(href='/auth/register') REGISTER
-  br
-  a.btn.btn-sucess(href='/signin') SignIn
