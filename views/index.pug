@@ -1,11 +1,12 @@
 extends layout
 
+- var usr= user
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to - #{title}
 
-  if {user}
-    p {user}
+  if usr
+    p  #{user}
     br
     a.btn.btn-danger(href='/signin') Logout;
   else
