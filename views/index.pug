@@ -8,11 +8,11 @@ block content
 
     if(user)
        p #{user.name}
-    br
-    a.btn.btn-info(href='/auth/logout') Logout;
-
-    br
-    a.btn.btn-primary(href='/auth/login') Login
+       br
+       a.btn.btn-info(href='/auth/logout') Logout;
+    else
+      br
+      a.btn.btn-primary(href='/auth/login') Login
 
     br
     a.btn.btn-danger(href='/users') Go To Protected Endpoint
