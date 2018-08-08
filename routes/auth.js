@@ -43,8 +43,15 @@ passport.use(new FacebookStrategy({
   callbackURL: "https://wonder971.herokuapp.com/auth/facebook/callback"
 },
 function(accessToken, refreshToken, profile, done) {
-  console.log('Our user authenticated with Facebook, and Facebook sent us back this profile info identifying the authenticated user:', profile);
-  return done(null, profile);
+
+  User.findOrCreate({name: profile.displayName}, {name: profile.displayName,userid: profile.id}, function(err, user) {
+    //if (err) { return done(err); }
+    return done(err, user);
+  });
+
+
+
+
 },
 
 ));
@@ -81,7 +88,7 @@ router.post('/register', (req, res, next) => {
         User.findOrCreate({ userid: req.body.userid }, { name: req.body.name,userid: req.body.userid,email: req.body.email }, function (err, user, created) {
          // if(err) console.log('err',err,'pro',profile);
 
-           console.log(created);
+           console.log('created',created);
                        return  created;
 
 
@@ -102,6 +109,7 @@ router.post('/register', (req, res, next) => {
 /* LOGOUT ROUTER */
 router.get('/logout', function(req, res){
   req.logout();
+  req.session.save();
   res.redirect('/');
 });
 
@@ -113,6 +121,7 @@ router.get('/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
+    req.session.save();
     res.redirect('/');
   });
 
