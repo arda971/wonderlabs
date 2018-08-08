@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy(
   // This is a "verify" function required by all Passport strategies
   (accessToken, refreshToken, profile, cb) => {
     console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
-    User.findOrCreate({name: profile.name}, {name: profile.name,userid: profile.id,email: profile.email}, function(err, user) {
+    User.findOrCreate({name: profile.displayName}, {name: profile.displayName,userid: profile.id,email: profile.emails[0].value}, function(err, user) {
       if (err) { return done(err); }
       done(null, user);
     });
