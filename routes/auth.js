@@ -25,7 +25,7 @@ passport.use(new LocalStrategy({
  function(username, password, done) {
 
     console.log('email local',username);
-   User.findOne({ username: username }, function(err, user) {
+   User.findOne({ email: username }, function(err, user) {
      if (err) { return done(err); }
      if (!user) {
        console.log('Incorrect username.');
