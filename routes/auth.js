@@ -125,8 +125,16 @@ router.post('/register', (req, res, next) => {
          // if(err) console.log('err',err,'pro',profile);
 
            console.log('created',created,'usr',user);
-
-            return created
+           if(created){
+           passport.authenticate('local')(req, res, () => {
+               req.session.save((err) => {
+                   if (err) {
+                       return next(err);
+                   }
+                   res.redirect('/');
+               });
+           });
+         }
 
         });
 
@@ -135,14 +143,7 @@ router.post('/register', (req, res, next) => {
 
 
 
-        passport.authenticate('local')(req, res, () => {
-            req.session.save((err) => {
-                if (err) {
-                    return next(err);
-                }
-                res.redirect('/');
-            });
-        });
+
     });
 
 
