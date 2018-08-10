@@ -31,11 +31,11 @@ passport.use(new LocalStrategy({
        console.log('Incorrect username.');
        return done(null, false, { message: 'Incorrect username.' });
      }
-    /* if (!user.validPassword(password)) {
+     if (!user.validPassword(password)) {
        console.log('Incorrect passwo.');
        return done(null, false, { message: 'Incorrect password.' });
-     }*/
-     console.log(user)
+     }
+     console.log('done local')
      return done(null, user);
    });
  }
