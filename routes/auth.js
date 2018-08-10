@@ -3,7 +3,7 @@ var router = express.Router();
 //const passportFacebook = require('../controller/facebookAuth');
 //const passportGoogle = require('../controller/googleAuth');
 const User = require('../models/User');
-var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
+
 
 
 
@@ -14,6 +14,8 @@ var LocalStrategy = require('passport-local').Strategy; /* this should be after 
 var passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+
+var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
 
 
 passport.use(new LocalStrategy(
