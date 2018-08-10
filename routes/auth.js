@@ -18,7 +18,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
 
 
-passport.use(new LocalStrategy(
+passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },
