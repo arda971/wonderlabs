@@ -91,11 +91,12 @@ router.get('/login', function(req, res, next) {
 
 /* LOGIN USR ROUTER */
 router.get('/signin', function(req, res, next) {
-  console.log(req.error);
-      res.render('signin', { title: 'Please Sign In ',error:req.error});
+
+      res.render('signin', { title: 'Please Sign In ',errors: req.session.messages || []});
+      req.session.messages = [];
 });
 
-router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/signin'}),(req, res, next) => {
+router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/signin',failureMessage: "Invalid username or password"}),(req, res, next) => {
 
 
   req.session.save((err) => {
