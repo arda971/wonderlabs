@@ -19,13 +19,15 @@ var LocalStrategy = require('passport-local').Strategy; /* this should be after 
 
 
 passport.use(new LocalStrategy(
- function(username, password, done) {
-   User.findOne({ username: username }, function(err, user) {
+ function(email, password, done) {
+   User.findOne({ email: email }, function(err, user) {
      if (err) { return done(err); }
      if (!user) {
+       console.log('Incorrect username.');
        return done(null, false, { message: 'Incorrect username.' });
      }
      if (!user.validPassword(password)) {
+       console.log('Incorrect passwo.');
        return done(null, false, { message: 'Incorrect password.' });
      }
      return done(null, user);
@@ -88,17 +90,10 @@ router.get('/signin', function(req, res, next) {
 
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res, next) => {
 
-  // find each person with a last name matching 'Ghost'
-  var query = User.findOne({ 'email': req.body.email });
 
 
 
-  // execute the query at a later time
-  query.exec(function (err, user) {
-    if (err) return handleError(err);
-    // Prints "Space Ghost is a talk show host."
-    console.log('usr',user);
-    if(user){
+
       req.session.save((err) => {
           if (err) {
               return next(err);
@@ -106,7 +101,7 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
           res.redirect('/');
       });
 
-    }
+
   });
 
 
