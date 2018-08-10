@@ -24,7 +24,7 @@ passport.use(new LocalStrategy({
   },
  function(username, password, done) {
 
-    console.log('email local',username);
+
    User.findOne({ email: username }, function(err, user) {
      if (err) { return done(err); }
      if (!user) {
@@ -127,18 +127,29 @@ router.post('/register', (req, res, next) => {
            console.log('created',created);
                        return  created;
 
-
+                       passport.authenticate('local')(req, res, () => {
+                            req.session.save((err) => {
+                                if (err) {
+                                    return next(err);
+                                }
+                                res.redirect('/');
+                            });
+                        });
         });
 
 
-        passport.authenticate('local')(req, res, () => {
+
+
+
+
+      /*  passport.authenticate('local')(req, res, () => {
             req.session.save((err) => {
                 if (err) {
                     return next(err);
                 }
                 res.redirect('/');
             });
-        });
+        });*/
     });
 
 
