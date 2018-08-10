@@ -135,14 +135,14 @@ router.post('/register', (req, res, next) => {
 
 
 
-      /*  passport.authenticate('local')(req, res, () => {
+        passport.authenticate('local')(req, res, () => {
             req.session.save((err) => {
                 if (err) {
                     return next(err);
                 }
                 res.redirect('/');
             });
-        });*/
+        });
     });
 
 
