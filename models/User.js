@@ -10,12 +10,13 @@ const UserSchema = new mongoose.Schema({
   password: String
 
   updated_at: { type: Date, default: Date.now },
+  validPassword: function( pwd ) {
+      // EXAMPLE CODE!
+      return ( this.password === pwd );
+  }
 });
 
-UserSchema.methods.validPassword = function( pwd ) {
-    // EXAMPLE CODE!
-    return ( this.password === pwd );
-};
+
 
 //UserSchema.statics.findOrCreate = require("find-or-create");
 //UserSchema.statics.findOrCreate = require("mongoose-findorcreate");
