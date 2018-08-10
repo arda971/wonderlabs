@@ -125,7 +125,7 @@ router.post('/register', (req, res, next) => {
          // if(err) console.log('err',err,'pro',profile);
 
            console.log('created',created);
-                       return  created;
+                       
 
                        passport.authenticate('local')(req, res, () => {
                             req.session.save((err) => {
