@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   name: String,
   userid: String,
   email: String,
-  password: String
+  password: String,
 
   updated_at: { type: Date, default: Date.now },
   validPassword: function( pwd ) {
