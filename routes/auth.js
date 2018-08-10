@@ -91,8 +91,8 @@ router.get('/login', function(req, res, next) {
 
 /* LOGIN USR ROUTER */
 router.get('/signin', function(req, res, next) {
-  console.log(req);
-      res.render('signin', { title: 'Please Sign In '});
+  console.log(req.error);
+      res.render('signin', { title: 'Please Sign In ',error:req.error});
 });
 
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/signin'}),(req, res, next) => {
