@@ -91,10 +91,11 @@ router.get('/login', function(req, res, next) {
 
 /* LOGIN USR ROUTER */
 router.get('/signin', function(req, res, next) {
+  console.log(req);
       res.render('signin', { title: 'Please Sign In '});
 });
 
-router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/login'}),(req, res, next) => {
+router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/signin'}),(req, res, next) => {
 
 
   req.session.save((err) => {
