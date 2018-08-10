@@ -90,7 +90,7 @@ router.get('/signin', function(req, res, next) {
       res.render('signin', { title: 'Please Sign In '});
 });
 
-router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res, next) => {
+router.post('/signin', (req, res, next) => {
 
   // find each person with a last name matching 'Ghost'
 /*  var query = User.findOne({ 'email': req.body.email });
@@ -108,13 +108,28 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
     }
   });*/
 
+/*
 
   req.session.save((err) => {
       if (err) {
           return next(err);
       }
       res.redirect('/');
-  });
+  });*/
+
+  console.log('email',req.body.email);
+ User.findOne({ email:req.body.email }, function(err, user) {
+   if (err) { return done(err); }
+   if (!user) {
+     console.log('Incorrect username.');
+
+   }
+   if (!user.validPassword(password)) {
+     console.log('Incorrect passwo.');
+
+   }
+   return next(null, user);
+ });
 
 });
 
