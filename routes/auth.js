@@ -67,12 +67,29 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res, next) => {
-    req.session.save((err) => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/');
-    });
+
+  // find each person with a last name matching 'Ghost'
+  var query = User.findOne({ 'email': req.body.email });
+
+
+
+  // execute the query at a later time
+  query.exec(function (err, user) {
+    if (err) return handleError(err);
+    // Prints "Space Ghost is a talk show host."
+    console.log('usr',user);
+    if(user){
+      req.session.save((err) => {
+          if (err) {
+              return next(err);
+          }
+          res.redirect('/');
+      });
+
+    }
+  });
+
+
 });
 
 /* REGISTER  ROUTER */
