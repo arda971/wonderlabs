@@ -19,10 +19,13 @@ var LocalStrategy = require('passport-local').Strategy; /* this should be after 
 
 
 passport.use(new LocalStrategy(
- function(email, password, done) {
+    usernameField: 'email',
+    passwordField: 'password'
+  },
+ function(username, password, done) {
 
     console.log('email',email);
-   User.findOne({ email: email }, function(err, user) {
+   User.findOne({ username: username }, function(err, user) {
      if (err) { return done(err); }
      if (!user) {
        console.log('Incorrect username.');
@@ -90,7 +93,7 @@ router.get('/signin', function(req, res, next) {
       res.render('signin', { title: 'Please Sign In '});
 });
 
-router.post('/signin', (req, res, next) => {
+router.post('/signin', passport.authenticate('local', { failureRedirect: '/atuh/login', failureFlash: true }),(req, res, next) => {
 
   // find each person with a last name matching 'Ghost'
 /*  var query = User.findOne({ 'email': req.body.email });
@@ -118,6 +121,7 @@ router.post('/signin', (req, res, next) => {
   });*/
 
   console.log('email',req.body.email);
+  /*
  User.findOne({ email:req.body.email }, function(err, user) {
    if (err) { return done(err); }
    if (!user) {
@@ -129,7 +133,7 @@ router.post('/signin', (req, res, next) => {
 
    }
    return next(null, user);
- });
+ });*/
 
 });
 
