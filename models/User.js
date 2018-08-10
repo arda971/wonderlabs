@@ -14,5 +14,6 @@ const UserSchema = new mongoose.Schema({
 //UserSchema.statics.findOrCreate = require("find-or-create");
 //UserSchema.statics.findOrCreate = require("mongoose-findorcreate");
 UserSchema.plugin(findOrCreate);
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);
