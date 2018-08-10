@@ -9,14 +9,14 @@ const UserSchema = new mongoose.Schema({
   email: String,
   password: String,
 
-  updated_at: { type: Date, default: Date.now },
-  validPassword: function( pwd ) {
-      // EXAMPLE CODE!
-      return ( this.password === pwd );
-  }
+  updated_at: { type: Date, default: Date.now }
+
 });
 
-
+UserSchema.methods.validPassword = function( pwd ) {
+    // EXAMPLE CODE!
+    return ( this.password === pwd );
+};
 
 //UserSchema.statics.findOrCreate = require("find-or-create");
 //UserSchema.statics.findOrCreate = require("mongoose-findorcreate");
