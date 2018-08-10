@@ -124,16 +124,9 @@ router.post('/register', (req, res, next) => {
         User.findOrCreate({ userid: req.body.userid }, { name: req.body.name,userid: req.body.userid,email: req.body.email,password: req.body.password }, (err, user, created)=> {
          // if(err) console.log('err',err,'pro',profile);
 
-           console.log('created',created);
+           console.log('created',created,'usr',user);
 
-           passport.authenticate('local')(req, res, () => {
-                req.session.save((err) => {
-                    if (err) {
-                        return next(err);
-                    }
-                    res.redirect('/');
-                });
-            });
+            return created
 
         });
 
