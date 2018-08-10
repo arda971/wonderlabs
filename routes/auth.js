@@ -94,7 +94,7 @@ router.get('/signin', function(req, res, next) {
       res.render('signin', { title: 'Please Sign In '});
 });
 
-router.post('/signin', passport.authenticate('local', { failureRedirect: '/atuh/login', failureFlash: true }),(req, res, next) => {
+router.post('/signin', passport.authenticate('local', { failureRedirect: '/atuh/login'}),(req, res, next) => {
 
 
   req.session.save((err) => {
