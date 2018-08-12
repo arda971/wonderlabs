@@ -3,6 +3,7 @@ var router = express.Router();
 //const passportFacebook = require('../controller/facebookAuth');
 //const passportGoogle = require('../controller/googleAuth');
 const User = require('../models/User');
+var nodemailer = require('nodemailer');
 
 
 
@@ -16,6 +17,16 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
+
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: process.env.MailUSR,
+        pass: process.env.MailPWD
+    }
+});
+
+
 
 
 passport.use(new LocalStrategy({
@@ -188,8 +199,24 @@ router.post('/forgot', (req, res, next) => {
 
 
 
-      console.log('done local',user.password);
+    const mailOptions = {
+      from: process.env.MailDFT, // sender address
+      to: req.body.email, // list of receivers
+      subject: 'Subject of your email', // Subject line
+      html: '<p>Your html here`${user.password}`</p>'// plain text body
+    };
 
+    transporter.sendMail(mailOptions, function (err, info) {
+  if(err)
+    console.log(err)
+  else
+    console.log(info);
+});
+
+
+  console.log('done local',user.password);
+
+  res.redirect('/');
   });
 
     });
