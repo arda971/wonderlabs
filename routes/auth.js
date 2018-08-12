@@ -19,10 +19,10 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
 
 var transporter = nodemailer.createTransport({
- service: 'gmail',
+ service: 'Gmail',
  auth: {
         user: process.env.MailUSR,
-        pass: process.env.MailPWD
+        pass: process.env.MailPWD,
     }
 });
 
