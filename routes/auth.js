@@ -167,7 +167,32 @@ router.get('/facebook/callback',
   });
 
 
+/* Forgot Password */
 
+router.get('/forgot', function(req, res, next) {
+
+      res.render('forgot', { title: 'Recover Password ',errors: req.session.messages || []});
+      req.session.messages = [];
+});
+
+
+
+router.post('/forgot', (req, res, next) => {
+
+  User.findOne({ email: req.body.email }, function(err, user) {
+    if (err) { return done(err); }
+    if (!user) {
+      console.log('Incorrect username.');
+      return done(null, false, { message: 'Incorrect username.' });
+    }
+
+
+
+      console.log('done local',user.password);
+
+  });
+
+    });
 /* GOOGLE ROUTER
 
 router.get('/google', passportGoogle.authenticate('google'));

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .container
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2= title
+      div: form(method='post', class='form-vertical')
+        fieldset
+
+          div.form-group
+            label Email:
+            input.form-control(name='email', type='email', placeholder='Please your email')
+
+          div.form-actions
+            input.btn.btn-primary(type='submit', value='Forgot Password')
