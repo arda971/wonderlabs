@@ -195,12 +195,12 @@ router.post('/forgot', (req, res, next) => {
 
     var transporter = nodemailer.createTransport({
      service: 'gmail',
-     authMethod: ‘LOGIN’,
-     requireTLS: true,
      auth: {
             user: process.env.MailUSR,
             pass: process.env.MailPWD,
-        }
+        },
+        authMethod: 'LOGIN',
+        requireTLS: true
     });
 
   //console.log('mail t',transporter);
