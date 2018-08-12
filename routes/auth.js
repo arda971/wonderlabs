@@ -18,13 +18,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 
 var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
 
-var transporter = nodemailer.createTransport({
- service: 'Gmail',
- auth: {
-        user: process.env.MailUSR,
-        pass: process.env.MailPWD,
-    }
-});
+
 
 
 
@@ -188,6 +182,8 @@ router.get('/forgot', function(req, res, next) {
 
 
 
+
+
 router.post('/forgot', (req, res, next) => {
 
   User.findOne({ email: req.body.email }, function(err, user) {
@@ -197,20 +193,28 @@ router.post('/forgot', (req, res, next) => {
       return done(null, false, { message: 'Incorrect username.' });
     }
 
+    var transporter = nodemailer.createTransport({
+     service: 'gmail',
+     auth: {
+            user: process.env.MailUSR,
+            pass: process.env.MailPWD,
+        }
+    });
 
+  console.log('mail t',transporter);
 
     const mailOptions = {
       from: process.env.MailDFT, // sender address
       to: req.body.email, // list of receivers
       subject: 'Subject of your email', // Subject line
-      html: '<p>Your html here`${user.password}`</p>'// plain text body
+      text: '<p>Your html here`${user.password}`</p>'// plain text body
     };
 
     transporter.sendMail(mailOptions, function (err, info) {
   if(err)
-    console.log(err)
+    console.log('Unable to send the mail :'+err.message)
   else
-    console.log(info);
+    console.log('Message response : '+info.response);
 });
 
 
