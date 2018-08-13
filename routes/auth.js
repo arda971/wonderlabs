@@ -193,23 +193,30 @@ router.post('/forgot', (req, res, next) => {
       return done(null, false, { message: 'Incorrect username.' });
     }
 
-    var transporter = nodemailer.createTransport({
+ /*   var transporter = nodemailer.createTransport({
      service: 'gmail',
      auth: {
             user: process.env.MailUSR,
             pass: process.env.MailPWD,
-        },
-        authMethod: 'LOGIN',
-        requireTLS: true
-    });
+        }
 
-  //console.log('mail t',transporter);
+    });*/
+
+var transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+        user: 'codifra971@gmail.com',
+        pass: 'codif971'
+    }
+});
+
+  console.log('mail t',transporter);
 
     const mailOptions = {
-      from: process.env.MailDFT, // sender address
-      to: req.body.email, // list of receivers
+      from: 'codifra971@gmail.com', // sender address
+      to: 'pyc971@gmail.com', // list of receivers
       subject: 'Subject of your email', // Subject line
-      text: '<p>Your html here`${user.password}`</p>'// plain text body
+      text: '<p>Your html here</p>'// plain text body
     };
 
     transporter.sendMail(mailOptions, function (err, info) {
