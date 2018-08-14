@@ -9,15 +9,15 @@ block content
 
          div.form-group
           label Name:
-          input.form-control(name='name', value=#{user.name}, autofocus)
+          input.form-control(name='name', value=user.name, autofocus)
 
           div.form-group
             label UserId:
-            input.form-control(name='userid',value=#{user.userid})
+            input.form-control(name='userid',value=user.userid)
 
           div.form-group
             label Email:
-            input.form-control(name='email', type='email', value=#{user.email})
+            input.form-control(name='email', type='email', value=user.email)
 
           div.form-actions
             input.btn.btn-primary(type='submit', value='Update')
