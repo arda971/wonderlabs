@@ -34,7 +34,7 @@ router.get('/edit', accessProtectionMiddleware,function(req, res, next) {
 
 router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
-      var usr = Object.assign({},req.user,{req.body.name,req.body.userid,req.body.email});
+      var usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
       console.log('rsr',usr);
       res.render('usrEdit', { title: 'Update  User Info', user: req.user, errors: req.session.messages || []});
       req.session.messages = [];
