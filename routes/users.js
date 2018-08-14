@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const User = require('../models/User');
 
 
 // Checks if a user is logged in
@@ -36,8 +37,19 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
       var usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
       console.log('rsr',usr);
-      res.render('usrEdit', { title: 'Update  User Info', user: req.user, errors: req.session.messages || []});
+
+      User.findAndModify({
+    query: { _id: usr._id },
+    sort: { rating: 1 },
+    update: usr,
+    upsert: true
+},function(err, user) {
+
+      console.log('usr update',user);
+      res.render('usrEdit', { title: 'Update  User Info', user: user, errors: req.session.messages || []});
       req.session.messages = [];
+});
+
 });
 
 
