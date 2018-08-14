@@ -36,19 +36,18 @@ router.get('/edit', accessProtectionMiddleware,function(req, res, next) {
 router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
       var usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
-      console.log('User',User);
 
-      User.findAndModify({
-    query: { _id: usr._id },
-    sort: { rating: 1 },
-    update: usr,
-    upsert: true
-},function(err, user) {
 
-      console.log('usr update',user);
-      res.render('usrEdit', { title: 'Update  User Info', user: user, errors: req.session.messages || []});
-      req.session.messages = [];
+      User.findByIdAndUpdate(usr._id, usr, function (err, user) {
+
+        console.log('usr update',user);
+        res.render('usrEdit', { title: 'Update  User Info', user: user, errors: req.session.messages || []});
+        req.session.messages = [];
+
 });
+
+
+
 
 });
 
