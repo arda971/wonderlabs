@@ -36,7 +36,7 @@ router.get('/edit', accessProtectionMiddleware,function(req, res, next) {
 router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
       var usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
-      console.log('rsr',usr);
+      console.log('User',User);
 
       User.findAndModify({
     query: { _id: usr._id },
