@@ -24,13 +24,21 @@ router.get('/', accessProtectionMiddleware, (req, res)=> {
 
 /* Edit User */
 
-router.get('/edit', function(req, res, next) {
+router.get('/edit', accessProtectionMiddleware,function(req, res, next) {
 
       console.log('rsr',req.user);
       res.render('usrEdit', { title: 'Update  User Info', user: req.user, errors: req.session.messages || []});
       req.session.messages = [];
 });
 
+
+router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
+
+      var usr = Object.assign({},req.user,{req.body.name,req.body.userid,req.body.email});
+      console.log('rsr',usr);
+      res.render('usrEdit', { title: 'Update  User Info', user: req.user, errors: req.session.messages || []});
+      req.session.messages = [];
+});
 
 
 

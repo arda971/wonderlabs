@@ -19,5 +19,9 @@ block content
             label Email:
             input.form-control(name='email', type='email', value=user.email)
 
+            div.form-group
+            
+              input.form-control(name='_id', type='hidden', value=user._id)
+
           div.form-actions
             input.btn.btn-primary(type='submit', value='Update')
