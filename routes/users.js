@@ -22,6 +22,16 @@ router.get('/', accessProtectionMiddleware, (req, res)=> {
 });
 
 
+/* Edit User */
+
+router.get('/edit', function(req, res, next) {
+
+      console.log('rsr',req.user);
+      res.render('usrEdit', { title: 'Update  User Info', user: req.user, errors: req.session.messages || []});
+      req.session.messages = [];
+});
+
+
 
 
 
