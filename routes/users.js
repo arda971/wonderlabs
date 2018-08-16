@@ -91,7 +91,7 @@ router.post('/newProject', accessProtectionMiddleware,function(req, res, next) {
 	});
 
 
-}
+});
 
 
 module.exports = router;
