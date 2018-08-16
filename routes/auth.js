@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 //const passportFacebook = require('../controller/facebookAuth');
 //const passportGoogle = require('../controller/googleAuth');
-const User = require('../models/User');
+const User = require('../models/Users');
 var nodemailer = require('nodemailer');
 
 
