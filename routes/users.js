@@ -57,7 +57,7 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
 /* Manage Projects */
 
-router.get('/project', accessProtectionMiddleware,function(req, res, next) {
+router.get('/projects', accessProtectionMiddleware,function(req, res, next) {
 
       var projects= Projects.find({ userid:req.user._id });
       console.log('projects',projects);
