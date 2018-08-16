@@ -59,10 +59,14 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
 router.get('/projects', accessProtectionMiddleware,function(req, res, next) {
 
-      var projects= Projects.find({ userid:req.user._id });
-      console.log('projects',projects);
-      res.render('listProjects', { title: 'List Projects', projects:projects, errors: req.session.messages || []});
-      req.session.messages = [];
+      Projects.find({ userid:req.user._id },(err,projects)=>{
+
+        console.log('projects',projects);
+        res.render('listProjects', { title: 'List Projects', projects:projects, errors: req.session.messages || []});
+        req.session.messages = [];
+
+      });
+
 });
 
 router.get('/newproject', accessProtectionMiddleware,function(req, res, next) {
