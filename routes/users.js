@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const User = require('../models/User');
+const Projects = require('../models/Projects');
+const Users = require('../models/Users');
 
 
 // Checks if a user is logged in
@@ -52,7 +53,45 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 });
 
 
+/* Manage Projects */
 
+router.get('/project', accessProtectionMiddleware,function(req, res, next) {
+
+      var projects= Projects.find({ userid:req.user._id });
+      console.log('projects',projects);
+      res.render('listProjects', { title: 'List Projects', projects:projects, errors: req.session.messages || []});
+      req.session.messages = [];
+});
+
+router.get('/newproject', accessProtectionMiddleware,function(req, res, next) {
+
+
+
+      res.render('newProject', { title: 'Add New Project', errors: req.session.messages || []});
+      req.session.messages = [];
+});
+
+router.post('/newProject', accessProtectionMiddleware,function(req, res, next) {
+
+       var project = {tittle:req.body.tittle,
+                      userid:req.user._id,
+                      description:req.body.description,
+                      deadline:req.body.deadline,
+                      type:req.body.type};
+
+      Projects.findOrCreate({ tittle: req.body.tittle }, project, (err,project,created)=>{
+
+	   console.log('project created',created,'project',project);
+           if(created){
+
+		res.redirect('/users/project');
+		}
+
+
+	});
+
+
+}
 
 
 module.exports = router;

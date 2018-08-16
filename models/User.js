@@ -8,6 +8,10 @@ const UserSchema = new mongoose.Schema({
   userid: String,
   email: String,
   password: String,
+  address: String,
+  tel: String,
+  projects:{type: Schema.ObjectId, ref: 'Projects'},
+  role:{type: String, required: true, enum: ['User', 'Admin', 'Contractor'], default: 'User'},
 
   updated_at: { type: Date, default: Date.now }
 
