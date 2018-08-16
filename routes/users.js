@@ -90,7 +90,7 @@ router.post('/newProject', accessProtectionMiddleware,function(req, res, next) {
 	   console.log('project created',created,'project',project);
            if(created){
 
-		res.redirect('/users/project');
+		res.redirect('/users/projects');
 		}
 
 
