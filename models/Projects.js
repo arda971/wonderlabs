@@ -8,7 +8,7 @@ const ProjectSchema = new mongoose.Schema({
   description: String,
   bill: String,
   contractor: String,
-  deadline:date,
+  deadline:Date,
   type:String,
   userid:String,
   status:{type: String, required: true, enum: ['created', 'Assigned', 'Not Approved', 'Approved','Complete','Paid','Closed'], default: 'created'},
