@@ -8,6 +8,6 @@ block content
 
         ul
           each val in projects
-           li: a(href='/project/'#{val._id}) #{val.tittle}
+           li: a(href='/project/'val._id) #{val.tittle}
 
         a.btn.btn-info(href='/users') dashboard
