@@ -112,7 +112,17 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
 
 });
 
+});
 
+router.post('/project/:id', accessProtectionMiddleware,function(req, res, next) {
+
+  User.findByIdAndUpdate({_id:req.params.id}, req.body, function (err, project) {
+
+    console.log('project update',project);
+    res.redirect('/users/projects');
+    
+
+});
 
 
 });
