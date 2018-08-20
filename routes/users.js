@@ -102,10 +102,10 @@ router.post('/newProject', accessProtectionMiddleware,function(req, res, next) {
 
 router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
 
-      console.log('edit project',req.id);
+      console.log('edit project',req.params.id);
 
 
-      Project.findById({_id:req.id}, function (err, user) {
+      Project.findById({_id:req.params.id}, function (err, user) {
 
         res.render('editProject', { title: 'Update  Project Info', project: req.user, errors: req.session.messages || []});
         req.session.messages = [];
