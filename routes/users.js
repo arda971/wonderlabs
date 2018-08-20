@@ -127,4 +127,12 @@ router.post('/project/:id', accessProtectionMiddleware,function(req, res, next) 
 
 });
 
+
+router.get('/deleteproject/:id', accessProtectionMiddleware,function(req, res, next) {
+           Projects.findByIdAndRemove(req.params.id, function (err, resp) {
+             if (err) next(err) ;
+        res.redirect('/users/projects');
+    });
+});
+
 module.exports = router;
