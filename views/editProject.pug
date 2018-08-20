@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  .container
+    .col-md-6.col-md-offset-3
+      h1.display-4.m-b-2= title
+      div: form(method='post', class='form-vertical')
+        fieldset
+
+         div.form-group
+          label Tittle:
+          input.form-control(name='tittle', value=project.tittle, autofocus)
+
+          div.form-group
+            label Description:
+            input.form-control(name='description',value=project.description)
+
+          div.form-group
+            label Deadline:
+            input.form-control(name='deadline', type='date',value=project.date)
+
+
+          div.form-group
+            label Type:
+            input.form-control(name='type',value=project.type)
+
+          div.form-actions
+            input.btn.btn-primary(type='submit', value='Update Project')
