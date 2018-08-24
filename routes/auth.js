@@ -141,7 +141,9 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
              let tmp={};
              tmp._id=item._id;
              tmp.tittle=item.tittle;
+             tmp.status=item.status;
              tmpProjects.push(tmp);
+
 
           });
 
