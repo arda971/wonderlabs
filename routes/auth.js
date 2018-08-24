@@ -57,7 +57,7 @@ passport.use(new GoogleStrategy(
   },
   // This is a "verify" function required by all Passport strategies
   function(accessToken, refreshToken, profile, done) {
-       User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id,email: profile.emails[0].value }, function (err, user) {
+       User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id,email: profile.emails[0].value,picture: 'https://www.google.com/s2/photos/profile/'+profile.id }, function (err, user) {
         // if(err) console.log('err',err,'pro',profile);
            return done(err, user);
 
