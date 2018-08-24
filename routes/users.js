@@ -41,7 +41,8 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
       var usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
 
       console.log('usr before update',usr);
-  /*    User.findByIdAndUpdate({_id:usr._id}, usr, function (err, response) {
+
+  /*  User.findByIdAndUpdate({_id:usr._id}, usr, function (err, response) {
 
 
         res.render('usrEdit', { title: 'Update  User Info', user: response, errors: req.session.messages || []});
@@ -49,12 +50,14 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
 });*/
 
-     User.findOrCreate({_id:usr._id}, usr, function (err, response) {
+
+User.findOrCreate({_id:usr._id}, usr, function (err, response) {
 
 
-       res.render('usrEdit', { title: 'Update  User Info', user: response, errors: req.session.messages || []});
-       req.session.messages = [];);
+    res.render('usrEdit', { title: 'Update  User Info', user: response, errors: req.session.messages || []});
+    req.session.messages = [];
 
+});
 
 
 
