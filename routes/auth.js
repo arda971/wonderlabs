@@ -121,13 +121,13 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
 
 
 
-  Projects.find({ userid: req.user._id }, function(err, projects)=> {
+  Projects.find({ userid: req.user._id }, (err, projects)=> {
 
          
         req.user.stats.projects=projects;
 
         console.log('user lgin',req.user);
-        
+
             req.session.save((err) => {
       if (err) {
           return next(err);
