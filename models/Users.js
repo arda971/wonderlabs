@@ -7,13 +7,15 @@ const UserSchema = new mongoose.Schema({
   name:{
   type: String,
   required: true,
+  lowercase: true
   },
   userid:{
   type: String,
   required: true,
-  },
+    },
   email:{
   type: String,
+  match:/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     },
   password:{
   type: String,
