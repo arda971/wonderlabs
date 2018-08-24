@@ -10,13 +10,16 @@ block content
         h2 Statistics
         .col-md-3
          h3 Created
-          div=user.stats.created
+          div
+           a(href='/users/createdProjects') #{user.stats.created}
         .col-md-3
          h3 Assigned
-          div=user.stats.assigned
+          div
+           a(href='/users/assignedProjects') #{user.stats.assigned}
         .col-md-3  
          h3 Completed
-          a(href='/users/completedProjects') #{user.stats.completed}
+          div 
+           a(href='/users/completedProjects') #{user.stats.completed}
 
 
 

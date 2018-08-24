@@ -82,7 +82,7 @@ router.get('/createdProjects', accessProtectionMiddleware,function(req, res, nex
 
     let projects=[];
 
-    req.user.stats.projects.foreach((item)=>{
+    req.user.stats.projects.forEach((item)=>{
 
         if(item.status==="created") projects.push(item);
     });
@@ -96,7 +96,7 @@ router.get('/assignedProjects', accessProtectionMiddleware,function(req, res, ne
 
     let projects=[];
 
-    req.user.stats.projects.foreach((item)=>{
+    req.user.stats.projects.forEach((item)=>{
 
         if(item.status==="assigned") projects.push(item);
     });
@@ -110,7 +110,7 @@ router.get('/completedProjects', accessProtectionMiddleware,function(req, res, n
 
     let projects=[];
 
-    req.user.stats.projects.foreach((item)=>{
+    req.user.stats.projects.forEach((item)=>{
 
         if(item.status==="completed") projects.push(item);
     });
