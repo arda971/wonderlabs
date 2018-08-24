@@ -3,6 +3,7 @@ var router = express.Router();
 //const passportFacebook = require('../controller/facebookAuth');
 //const passportGoogle = require('../controller/googleAuth');
 const User = require('../models/Users');
+const Projects = require('../models/Projects');
 var nodemailer = require('nodemailer');
 
 
@@ -118,10 +119,23 @@ router.get('/signin', function(req, res, next) {
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/signin',failureMessage: "Invalid username or password"}),(req, res, next) => {
 
 
-  req.session.save((err) => {
+
+
+  Projects.find({ userid: req.user._id }, function(err, projetcs) {
+
+        req.user.stats.projects=projects;
+        return true;
+
+  });
+
+
+    req.session.save((err) => {
       if (err) {
           return next(err);
       }
+
+
+
       res.redirect('/');
   });
 
