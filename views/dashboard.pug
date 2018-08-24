@@ -9,9 +9,6 @@ block content
         .col-md-12
         h2 Statistics
         .col-md-3
-         h3 Projects
-          div=user.stats.projects
-        .col-md-3
          h3 Created
           div=user.stats.created
         .col-md-3
@@ -20,6 +17,12 @@ block content
         .col-md-3  
          h3 Completed
           div=user.stats.completed
+
+        .col-md-12
+         h3 Projects
+          ul
+          each val in user.stats.projects
+           li: a(href='/users/project/'+val._id) #{val.tittle}
 
 
         // sign in form
