@@ -16,13 +16,8 @@ block content
           div=user.stats.assigned
         .col-md-3  
          h3 Completed
-          div=user.stats.completed
+          a(href='/users/completedProjects) #{user.stats.completed}
 
-        .col-md-12
-         h3 Projects
-          ul
-          each val in user.stats.projects
-           li: a(href='/users/project/'+val._id) #{val.tittle}
 
 
         // sign in form

@@ -39,7 +39,7 @@ router.get('/edit', accessProtectionMiddleware,function(req, res, next) {
 
 router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
-      var usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
+      let usr = Object.assign({},req.user,{name:req.body.name,userid:req.body.userid,email:req.body.email});
 
       console.log('usr before update',usr);
 
@@ -65,13 +65,57 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
 router.get('/projects', accessProtectionMiddleware,function(req, res, next) {
 
-      Projects.find({ userid:req.user._id },(err,projects)=>{
+     /* Projects.find({ userid:req.user._id },(err,projects)=>{
 
         console.log('projects',projects);
         res.render('listProjects', { title: 'List Projects', projects:projects, errors: req.session.messages || []});
         req.session.messages = [];
 
-      });
+      });*/
+
+    res.render('listProjects', { title: 'List Projects', projects:req.user.stats.projects});      
+
+});
+
+
+router.get('/createdProjects', accessProtectionMiddleware,function(req, res, next) {
+
+    let projects=[];
+
+    req.user.stats.projects.foreach((item)=>{
+
+        if(item.status==="created") projects.push(item);
+    });
+
+    res.render('listProjects', { title: 'List Created Not Assigned Projects', projects:projects});      
+
+});
+
+
+router.get('/assignedProjects', accessProtectionMiddleware,function(req, res, next) {
+
+    let projects=[];
+
+    req.user.stats.projects.foreach((item)=>{
+
+        if(item.status==="assigned") projects.push(item);
+    });
+
+    res.render('listProjects', { title: 'List Created Assigned Projects', projects:projects});      
+
+});
+
+
+router.get('/completedProjects', accessProtectionMiddleware,function(req, res, next) {
+
+    let projects=[];
+
+    req.user.stats.projects.foreach((item)=>{
+
+        if(item.status==="completed") projects.push(item);
+    });
+
+    res.render('listProjects', { title: 'List Created Completed Projects', projects:projects});      
 
 });
 
