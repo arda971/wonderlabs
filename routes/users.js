@@ -1,4 +1,5 @@
 var express = require('express');
+const moment = require('moment');
 var router = express.Router();
 const Projects = require('../models/Projects');
 const Users = require('../models/Users');
@@ -157,7 +158,7 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
 
       Projects.findById({_id:req.params.id}, function (err, project) {
        console.log('edit project',project);
-        res.render('editProject', { title: 'Update  Project Info', project:project, errors: req.session.messages || []});
+        res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
         req.session.messages = [];
 
 });

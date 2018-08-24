@@ -3,6 +3,22 @@ const mongoose = require('mongoose');
 
 var findOrCreate = require('mongoose-findorcreate')
 
+const commentSchema = new mongoose.Schema({
+
+    comment:  {
+        type: String,
+        required: true
+    },
+    author:  {
+        type: String,
+        required: true
+    },
+    authorId:String,
+}, {
+    timestamps: true
+});
+
+
 const ProjectSchema = new mongoose.Schema({
   tittle: String,
   description: String,
@@ -21,7 +37,8 @@ const ProjectSchema = new mongoose.Schema({
     default: 1,
     min: 1
   }
-}],
+ }],
+ comments:[commentSchema],
 
   updated_at: { type: Date, default: Date.now }
 

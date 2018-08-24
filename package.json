@@ -14,6 +14,7 @@
     "express-session": "^1.15.6",
     "find-or-create": "^1.1.0",
     "http-errors": "~1.6.2",
+    "moment": "^2.22.2",
     "mongoose": "^5.2.7",
     "mongoose-findorcreate": "^3.0.0",
     "morgan": "~1.9.0",
