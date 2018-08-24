@@ -42,22 +42,16 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
       console.log('usr before update',usr);
 
-  /*  User.findByIdAndUpdate({_id:usr._id}, usr, function (err, response) {
+  Users.findByIdAndUpdate({_id:usr._id}, usr, function (err, response) {
 
 
         res.render('usrEdit', { title: 'Update  User Info', user: response, errors: req.session.messages || []});
         req.session.messages = [];
 
-});*/
-
-
-User.findOrCreate({_id:usr._id}, usr, function (err, response) {
-
-
-    res.render('usrEdit', { title: 'Update  User Info', user: response, errors: req.session.messages || []});
-    req.session.messages = [];
-
 });
+
+
+
 
 
 
