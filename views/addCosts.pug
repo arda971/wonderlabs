@@ -8,4 +8,4 @@ block content
        h2='$ '+ product.price
        h3=product.description
        h4= amount
-       button.btn.btn-primary(onclick='add_to_cart('#{product.id}','#{product.price}')') Add to Cart
+       button.btn.btn-primary(onclick='add_to_cart('+product.id+','+product.price+')') Add to Cart
