@@ -33,9 +33,24 @@ const UserSchema = new mongoose.Schema({
   },
   stats:{
    projects:[],
-   created:0,
-   assigned:0,
-   completed:0
+   created: {
+        type: Number,
+        default: 0,
+        min: 0,
+        required: true,
+      },
+   assigned: {
+        type: Number,
+        default: 0,
+        min: 0,
+        required: true,
+      },
+   completed: {
+        type: Number,
+        default: 0,
+        min: 0,
+        required: true,
+      }
   },
 
   role:{type: String, required: true, enum: ['User', 'Admin', 'Contractor'], default: 'User'},
