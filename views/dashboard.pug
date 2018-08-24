@@ -6,6 +6,17 @@ block content
       .col-md-6.col-md-offset-3
         h1.display-4.m-b-2= title
 
+        h2 Statistics
+        h3 Projects
+          div=user.stats.projects
+        h3 Created
+          div=user.stats.created
+        h3 Assigned
+          div=user.stats.assigned
+        h3 Completed
+          div=user.stats.completed
+
+
         // sign in form
         div.form-group
           a.btn.btn-primary(href='/users/projects') List All Projects

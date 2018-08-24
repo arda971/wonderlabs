@@ -23,7 +23,7 @@ router.get('/', accessProtectionMiddleware, (req, res)=> {
     yourUserInfo: req.user,
   });*/
 
-res.render('dashboard', { title: 'dashboard'});
+res.render('dashboard', { title: 'dashboard', user:req.user});
 });
 
 
