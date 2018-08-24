@@ -4,13 +4,36 @@ const passportLocalMongoose = require('passport-local-mongoose');
 var findOrCreate = require('mongoose-findorcreate')
 
 const UserSchema = new mongoose.Schema({
-  name: String,
-  userid: String,
-  email: String,
-  password: String,
-  address: String,
-  tel: String,
-  
+  name:{
+  type: String,
+  required: true,
+  },
+  userid:{
+  type: String,
+  required: true,
+  },
+  email:{
+  type: String,
+  required: true,
+  },
+  password:{
+  type: String,
+  required: true,
+  },
+  address:{
+  type: String,
+  default:''
+  },
+  tel:{
+  type: String,
+  default:''
+  },
+  picture: {
+  type: String,
+  required: true,
+  match: /^http:\/\//i
+  },
+
   role:{type: String, required: true, enum: ['User', 'Admin', 'Contractor'], default: 'User'},
 
   updated_at: { type: Date, default: Date.now }
