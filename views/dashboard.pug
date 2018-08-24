@@ -6,19 +6,20 @@ block content
       .col-md-6.col-md-offset-3
         h1.display-4.m-b-2= title
 
+        .col-md-12
         h2 Statistics
         .col-md-3
-        h3 Projects
+         h3 Projects
           div=user.stats.projects
-        .col-md-3
-        h3 Created
-          div=user.stats.created
-        .col-md-3
-        h3 Assigned
-          div=user.stats.assigned
-        .col-md-3  
-        h3 Completed
-          div=user.stats.completed
+         .col-md-3
+           h3 Created
+            div=user.stats.created
+         .col-md-3
+           h3 Assigned
+            div=user.stats.assigned
+         .col-md-3  
+           h3 Completed
+            div=user.stats.completed
 
 
         // sign in form
