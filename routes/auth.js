@@ -121,7 +121,7 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
 
 
 
-  Projects.find({ userid: req.user._id }, function(err, projetcs) {
+  Projects.find({ userid: req.user._id }, function(err, projects) {
 
         req.user.stats.projects=projects;
         return true;
