@@ -8,7 +8,7 @@ block content
 
     if(user)
        p #{user.name}
-       p img(src= user.picture)
+       img(src= user.picture)
        br
        a.btn.btn-info(href='/auth/logout') Logout;
     else
