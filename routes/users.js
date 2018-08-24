@@ -43,7 +43,7 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
       console.log('usr before update',usr);
       User.findByIdAndUpdate({_id:usr._id}, usr, function (err, user) {
 
-        console.log('usr update',user);
+
         res.render('usrEdit', { title: 'Update  User Info', user: user, errors: req.session.messages || []});
         req.session.messages = [];
 
