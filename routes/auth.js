@@ -77,6 +77,7 @@ passport.use(new FacebookStrategy({
 },
 function(accessToken, refreshToken, profile, done) {
 
+  console.log('fb profile',profile);
   User.findOrCreate({name: profile.displayName}, {name: profile.displayName,userid: profile.id,picture: 'http://graph.facebook.com/' + profile.id.toString() + '/picture?type=large'}, function(err, user) {
     //if (err) { return done(err); }
     return done(err, user);
