@@ -9,6 +9,4 @@ block content
        h4= amount
        button.btn.btn-primary( onclick=add_to_cart('#{product.id}','#{product.price}')) Add to Cart
 
-
-       script
-         include /js/cart.js
+       script(src='/js/cart.js')
