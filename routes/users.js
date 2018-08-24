@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Projects = require('../models/Projects');
 const Users = require('../models/Users');
+const Products = require('../models/Products');
 
 
 // Checks if a user is logged in
@@ -47,7 +48,7 @@ router.post('/edit', accessProtectionMiddleware,function(req, res, next) {
 
     req.logout();
     req.session.save();
-    res.redirect('/');
+    res.redirect('/auth/login');
 
 
 });
@@ -141,5 +142,16 @@ router.get('/deleteproject/:id', accessProtectionMiddleware,function(req, res, n
         res.redirect('/users/projects');
     });
 });
+
+
+router.get('/addcostproject/:id', accessProtectionMiddleware,function(req, res, next) {
+           Products.find(function (err, products) {
+             if (err) next(err) ;
+             console.log('products list',products);
+              res.render('addCosts', { title: 'Add Costs  Project ', project:req.params.id, products:products[0], errors: req.session.messages || []});
+
+    });
+});
+
 
 module.exports = router;

@@ -25,5 +25,7 @@ block content
             input.form-control(name='type',value=project.type)
 
           div.form-actions
-            a.btn.btn-danger(href='/users/deleteproject/'+project._id) Delete 
+            a.btn.btn-danger(href='/users/deleteproject/'+project._id) Delete
+            a.btn.btn-info(href='/users/addCostProject/'+project._id) Add Cost Project
+            a.btn.btn-info(href='/users/checkout/'+project._id) Checkout
             input.btn.btn-primary(type='submit', value='Update Project')

@@ -1,0 +1,13 @@
+extends layout
+- var amount = 0
+block content
+  .container
+    .col-md-6.col-md-offset-3
+       h1= product.name
+       h2='$ '+ product.price
+       h3=product.description
+       h4= amount
+      < button  class="btn btn-primary" onclick="add_to_cart('#{product.id}','#{product.price}')">Add to Cart</ button >
+
+block js
+       script(src='/js/cart.js')

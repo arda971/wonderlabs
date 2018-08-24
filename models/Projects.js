@@ -11,7 +11,17 @@ const ProjectSchema = new mongoose.Schema({
   deadline:Date,
   type:String,
   userid:String,
-  status:{type: String, required: true, enum: ['created', 'Assigned', 'Not Approved', 'Approved','Complete','Paid','Closed'], default: 'created'},
+  status:{type: String, required: true, enum: ['created', 'assigned', 'complete','paid','closed'], default: 'created'},
+  costs: [{
+  product: {
+    type: mongoose.Schema.Types.ObjectId
+  },
+  quantity: {
+    type: Number,
+    default: 1,
+    min: 1
+  }
+}],
 
   updated_at: { type: Date, default: Date.now }
 

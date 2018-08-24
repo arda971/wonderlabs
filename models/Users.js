@@ -17,10 +17,7 @@ const UserSchema = new mongoose.Schema({
   type: String,
   match:/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     },
-  password:{
-  type: String,
-
-  },
+  password:String,
   address:{
   type: String,
   default:''
@@ -32,7 +29,7 @@ const UserSchema = new mongoose.Schema({
   picture: {
   type: String,
   required: true,
-  
+
   },
 
   role:{type: String, required: true, enum: ['User', 'Admin', 'Contractor'], default: 'User'},
@@ -42,13 +39,11 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.methods.validPassword = function( pwd ) {
-    // EXAMPLE CODE!
-    return ( this.password === pwd );
+
+   return ( this.password === pwd );
 };
 
-//UserSchema.statics.findOrCreate = require("find-or-create");
-//UserSchema.statics.findOrCreate = require("mongoose-findorcreate");
+
 UserSchema.plugin(findOrCreate);
-//UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);

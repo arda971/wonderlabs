@@ -95,6 +95,19 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Please Sign In with:' });
 });
 
+/* FACEBOOK ROUTER */
+router.get('/facebook',
+  passport.authenticate('facebook'));
+
+router.get('/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    req.session.save();
+    res.redirect('/');
+  });
+
+
 /* LOGIN USR ROUTER */
 router.get('/signin', function(req, res, next) {
 
@@ -116,6 +129,9 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
 
 
 });
+
+
+
 
 /* REGISTER  ROUTER */
 router.get('/register', function(req, res, next) {
@@ -160,17 +176,6 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-/* FACEBOOK ROUTER */
-router.get('/facebook',
-  passport.authenticate('facebook'));
-
-router.get('/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    req.session.save();
-    res.redirect('/');
-  });
 
 
 /* Forgot Password */
@@ -228,38 +233,11 @@ router.post('/forgot', (req, res, next) => {
   });
 
     });
-/* GOOGLE ROUTER
-
-router.get('/google', passportGoogle.authenticate('google'));
-
-// This is where Google sends users once they authenticate with Google
-// Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
-router.get('/google/callback',
-  passportGoogle.authenticate('google', { failureRedirect: '/auth/login', session: true }),
-  (req, res) => {
-    console.log('wooo we authenticated, here is our user object:', req.user);
-    //res.json(req.user);
-    res.redirect('/');
-  }
-);
-
-*/
 
 
 
 
 
-
-
-
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
-    req.session.save((err) => {
-        if (err) {
-            return next(err);
-        }
-        res.redirect('/');
-    });
-});
 
 
 
