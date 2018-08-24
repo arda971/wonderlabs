@@ -1,5 +1,5 @@
 extends layout
-include script
+
 - var amount = 0
 block content
   .container
@@ -9,6 +9,3 @@ block content
        h3=product.description
        h4= amount
        button.btn.btn-primary( onclick=add_to_cart('#{product.id}','#{product.price}')) Add to Cart
-
-       script.
-         console.log('Foo bar');
