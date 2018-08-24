@@ -87,7 +87,7 @@ router.get('/createdProjects', accessProtectionMiddleware,function(req, res, nex
         if(item.status==="created") projects.push(item);
     });
 
-    res.render('listProjects', { title: 'List Created Not Assigned Projects', projects:projects});      
+    res.render('listProjects', { title: 'List Created Projects', projects:projects});      
 
 });
 
@@ -101,7 +101,7 @@ router.get('/assignedProjects', accessProtectionMiddleware,function(req, res, ne
         if(item.status==="assigned") projects.push(item);
     });
 
-    res.render('listProjects', { title: 'List Created Assigned Projects', projects:projects});      
+    res.render('listProjects', { title: 'List  Assigned Projects', projects:projects});      
 
 });
 
@@ -115,7 +115,7 @@ router.get('/completedProjects', accessProtectionMiddleware,function(req, res, n
         if(item.status==="completed") projects.push(item);
     });
 
-    res.render('listProjects', { title: 'List Created Completed Projects', projects:projects});      
+    res.render('listProjects', { title: 'List Completed Projects', projects:projects});      
 
 });
 

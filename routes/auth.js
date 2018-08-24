@@ -123,8 +123,23 @@ router.post('/signin', passport.authenticate('local', { failureRedirect: '/auth/
 
   Projects.find({ userid: req.user._id }, (err, projects)=> {
 
-         
+        let created=0;
+        let assigned=0;
+        let completed=0;
+
         req.user.stats.projects=projects;
+
+        projects.forEach((item)=>{
+
+              if(item.status==="created") created++;
+             if(item.status==="assigned") assigned++;
+             if(item.status==="completed") completed++;
+
+          });
+
+        req.user.stats.created=created;
+        req.user.stats.assigned=assigned;
+        req.user.stats.completed=completed;
 
         console.log('user lgin',req.user);
 
