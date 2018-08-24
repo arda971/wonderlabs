@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
   picture: {
   type: String,
   required: true,
-  match: /^http:\/\//i
+  
   },
 
   role:{type: String, required: true, enum: ['User', 'Admin', 'Contractor'], default: 'User'},
