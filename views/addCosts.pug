@@ -26,12 +26,12 @@ block content
 
         p=prdtName 
 
-        input#prdName(type='text', placeholder='enter name' onchange='add_name()')
+        input#prdName(type='text', placeholder='enter name' )
         input#prdDescription(type='text', placeholder='enter desc')
         label Price
         input#prdPrice(type='number')
         label Quantity
         input#prdQuantity(type='number')
-        button.btn.btn-primary(onclick='add_to_cart('+prdtName+','+prdDescription+',"'+prdPrice+'",'+prdQuantity+')') Add to Cart
+        button.btn.btn-primary(onclick='add_to_cart()') Add to Cart
 
 

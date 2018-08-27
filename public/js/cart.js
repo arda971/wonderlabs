@@ -1,6 +1,7 @@
 let prdtName;
 
-function add_to_cart(product_name,product_description,product_price,product_quantity){
+
+function add_to_cart(){
     let cartProducts=[];
     let list = document.getElementById('list');
     let prdName = document.getElementById('prdName');
@@ -8,16 +9,21 @@ function add_to_cart(product_name,product_description,product_price,product_quan
     let prdPrice = document.getElementById('prdPrice');
     let prdQuantity = document.getElementById('prdQuantity');
 
+
     
 
-  	cartProducts.push({name:product_name,description:product_description,price:product_price,quantity:product_quantity});
+  	cartProducts.push({name:prdName.innerText,
+  		description:prdDescription.innerText,
+  		price:prdPrice.innerText,
+  		quantity:prdQuantity.innerText
+  	});
 
 
     let listDom=document.createElement('li');
     let divList=document.createElement('div');
     let spanEdit=document.createElement('span');
     let spanDelete=document.createElement('span');
-    let listDomText= document.createTextNode=product_description;
+    let listDomText= document.createTextNode=prdDescription.innerText;
     let spanEditText= document.createTextNode="Edit";
     let spanDeleteText= document.createTextNode="Delete";
             
