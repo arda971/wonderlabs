@@ -10,7 +10,9 @@ function add_to_cart(){
     let prdQuantity = document.getElementById('prdQuantity');
 
 
-    console.log('prdname',prdName);
+    console.log(prdName);
+    console.log('val',prdName.value);
+
 
   	cartProducts.push({name:prdName.innerText,
   		description:prdDescription.innerText,
