@@ -4,7 +4,11 @@ block content
   .container
     .col-md-6.col-md-offset-3
        
-    - var proj=cartProducts || []
+    - var proj=[]
+      if (cartProducts) 
+         proj=cartProducts
+
+
     
 
         div
@@ -24,7 +28,7 @@ block content
           each val in proj
            li: a(href='/users/project/'+val.name) #{val.name} #{val.description} #{val.price} #{val.quantity}
 
-        p=prdtName 
+        
 
         input#prdName(type='text', placeholder='enter name' )
         input#prdDescription(type='text', placeholder='enter desc')

@@ -25,7 +25,7 @@ function add_to_cart(){
     let divList=document.createElement('div');
     let spanEdit=document.createElement('span');
     let spanDelete=document.createElement('span');
-    let listDomText= document.createTextNode=prdDescription.innerText;
+    let listDomText= document.createTextNode=prdDescription.value;
     let spanEditText= document.createTextNode="Edit";
     let spanDeleteText= document.createTextNode="Delete";
             
