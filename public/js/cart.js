@@ -18,7 +18,7 @@ function add_to_cart(product_id,product_price,product_description){
             divList.className="te";
             listDom.append(listDomText);
             listDom.append(divList);
-            if(item.type==="d") listDom.className="daily"; 
+            
             listDom.id=cartProducts.length;
             list.appendChild(listDom);
        
