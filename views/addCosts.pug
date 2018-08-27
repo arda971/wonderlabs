@@ -3,7 +3,7 @@ extends layout
 block content
   .container
     .col-md-6.col-md-offset-3
-       - var amount = 0
+       
 
 
         div
@@ -18,11 +18,16 @@ block content
 
             div.form-actions
             input.btn.btn-primary(type='submit', value='Submit Quote')
+        ul
+          each val in cartProducts
+           li: a(href='/users/project/'+val.name) #{val.description} #{val.price}
 
-        h1= product.name
-        h2='$ '+ product.price
-        h3=product.description
-        h4= amount
-        button.btn.btn-primary(onclick='add_to_cart('+product.id+','+product.price+',"'+product.description+'")') Add to Cart
+        input#prdName(type='text', placeholder='enter name')
+        input#prdDescription(type='text', placeholder='enter desc')
+        label Price
+        input#prdPrice(type='number')
+        label Quantity
+        input#prdQuantity(type='number')
+        button.btn.btn-primary(onclick='add_to_cart('+prdName+','+prdDescription+',"'+prdPrice+'",'+prdQuantity+')') Add to Cart
 
 
