@@ -24,12 +24,14 @@ block content
           each val in proj
            li: a(href='/users/project/'+val.name) #{val.name} #{val.description} #{val.price} #{val.quantity}
 
+        p=prdtName 
+
         input#prdName(type='text', placeholder='enter name')
         input#prdDescription(type='text', placeholder='enter desc')
         label Price
         input#prdPrice(type='number')
         label Quantity
         input#prdQuantity(type='number')
-        button.btn.btn-primary(onclick='add_to_cart('+name+','+prdDescription+',"'+prdPrice+'",'+prdQuantity+')') Add to Cart
+        button.btn.btn-primary(onclick='add_to_cart('+prdtName+','+prdDescription+',"'+prdPrice+'",'+prdQuantity+')') Add to Cart
 
 

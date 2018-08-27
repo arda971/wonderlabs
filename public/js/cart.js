@@ -6,6 +6,8 @@ function add_to_cart(product_name,product_description,product_price,product_quan
     let prdPrice = document.getElementById('prdPrice');
     let prdQuantity = document.getElementById('prdQuantity');
 
+    let prdtName;
+
   	cartProducts.push({name:product_name,description:product_description,price:product_price,quantity:product_quantity});
 
 
@@ -40,6 +42,13 @@ function add_to_cart(product_name,product_description,product_price,product_quan
              console.log(event);
          });
 
+
+     prdName.addEventListener('change',function(){
+
+   			console.log(event);
+   			prdtName=event.target.value;	
+       
+         });
 
 
     
