@@ -1,4 +1,3 @@
-let prdtName;
 
 
 function add_to_cart(){
@@ -62,8 +61,3 @@ function add_to_cart(){
 
 }
 
-function add_name(){
-
-		console.log(event);
-   			prdtName=event.target.value;
-}
