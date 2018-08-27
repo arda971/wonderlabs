@@ -19,8 +19,7 @@ block content
             div.form-actions
             input.btn.btn-primary(type='submit', value='Submit Quote')
         ul
-          each val in cartProducts
-           li: a(href='/users/project/'+val.name) #{val.description} #{val.price}
+          li=cartProducts
 
         input#prdName(type='text', placeholder='enter name')
         input#prdDescription(type='text', placeholder='enter desc')
