@@ -14,10 +14,10 @@ function add_to_cart(){
     console.log('val',prdName.value);
 
 
-  	cartProducts.push({name:prdName.innerText,
-  		description:prdDescription.innerText,
-  		price:prdPrice.innerText,
-  		quantity:prdQuantity.innerText
+  	cartProducts.push({name:prdName.value,
+  		description:prdDescription.value,
+  		price:prdPrice.value,
+  		quantity:prdQuantity.value
   	});
 
 
