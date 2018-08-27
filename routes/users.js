@@ -196,7 +196,8 @@ router.get('/addcostproject/:id', accessProtectionMiddleware,function(req, res, 
              var product={
                name:'test',
                description:'test',
-               price:10
+               price:10,
+               id:1
              }
               res.render('addCosts', { title: 'Add Costs  Project ', project:req.params.id, products:products, product:product, errors: req.session.messages || []});
 
