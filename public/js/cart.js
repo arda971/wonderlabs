@@ -6,6 +6,7 @@ function add_to_cart(product_name,product_description,product_price,product_quan
     let prdPrice = document.getElementById('prdPrice');
     let prdQuantity = document.getElementById('prdQuantity');
 
+  	cartProducts.push({name:product_name,description:product_description,price:product_price,quantity:product_quantity});
 
 
     let listDom=document.createElement('li');
@@ -24,7 +25,7 @@ function add_to_cart(product_name,product_description,product_price,product_quan
             listDom.append(listDomText);
             listDom.append(divList);
             
-            listDom.id=cartProducts.length;
+            listDom.id=cartProducts.length ;
             list.appendChild(listDom);
        
          
@@ -41,7 +42,7 @@ function add_to_cart(product_name,product_description,product_price,product_quan
 
 
 
-    cartProducts.push({name:product_name,description:product_description,price:product_price,quantity:product_quantity});
+    
 
     console.log('add products',cartProducts);
 
