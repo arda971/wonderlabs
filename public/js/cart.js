@@ -10,7 +10,7 @@ function add_to_cart(){
     let prdQuantity = document.getElementById('prdQuantity');
 
 
-    
+    console.log('prdname',prdName);
 
   	cartProducts.push({name:prdName.innerText,
   		description:prdDescription.innerText,
@@ -47,7 +47,7 @@ function add_to_cart(){
                     console.log("delete"); 
              }
              event.target.className="checked";
-             console.log(event);
+            
          });
 
 
