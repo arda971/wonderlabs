@@ -198,7 +198,7 @@ router.get('/addcostproject/:id', accessProtectionMiddleware,function(req, res, 
                description:'test',
                price:10
              }
-              res.render('addCosts', { title: 'Add Costs  Project ', project:req.params.id, product:product, errors: req.session.messages || []});
+              res.render('addCosts', { title: 'Add Costs  Project ', project:req.params.id, products:products, product:product, errors: req.session.messages || []});
 
     });
 });

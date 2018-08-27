@@ -4,8 +4,25 @@ block content
   .container
     .col-md-6.col-md-offset-3
        - var amount = 0
-       h1= product.name
-       h2='$ '+ product.price
-       h3=product.description
-       h4= amount
-       button.btn.btn-primary(onclick='add_to_cart('+product.id+','+product.price+')') Add to Cart
+
+
+        div
+           ul#list 
+
+        div: form(method='post', class='form-vertical')
+        fieldset
+
+            div.form-group
+            input.form-control(type='hidden', name='cart', value=cartProducts)
+
+
+            div.form-actions
+            input.btn.btn-primary(type='submit', value='Submit Quote')
+
+        h1= product.name
+        h2='$ '+ product.price
+        h3=product.description
+        h4= amount
+        button.btn.btn-primary(onclick='add_to_cart('+product.id+','+product.price+','+product.description+')') Add to Cart
+
+
