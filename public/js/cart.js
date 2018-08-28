@@ -32,7 +32,10 @@ function add_to_cart(){
   	 newItem.quantity= parseInt(newItem.quantity)+ parseInt(prdQuantity.value);
   	 cartProducts[newItemIndex]=newItem;
 
-  	 console.log('up products',cartProducts);
+  	 let upElt=document.getElementById('qte'+(newItemIndex+1));
+
+  	 console.log('up products',cartProducts,'line',upElt);
+
 
   } else{
 
@@ -58,20 +61,25 @@ function add_to_cart(){
     let pAmountText= document.createTextNode=prdQuantity.value;
     let spanEditText= document.createTextNode="Edit";
     let spanDeleteText= document.createTextNode="Delete";
+
             
-            spanEdit.append(spanEditText);
-            spanDelete.append(spanDeleteText);
-            divList.append(spanEdit);
-            divList.append(spanDelete);
-            divList.className="te";
-            listDom.append(listDomText);
-            listDom.append(pDesc);
-            listDom.append(pPrice);
-            listDom.append(pAmount);
-            listDom.append(divList);
-            
-            listDom.id=cartProducts.length ;
-            list.appendChild(listDom);
+    spanEdit.append(spanEditText);
+    spanDelete.append(spanDeleteText);
+    divList.append(spanEdit);
+    divList.append(spanDelete);
+    divList.className="te";
+    pDesc.append(pDescText);
+    pPrice.append(pPriceText);
+    pAmount.append(pAmountText);
+    pAmount.id='qte'+cartProducts.length;
+    listDom.append(listDomText);
+    listDom.append(pDesc);
+    listDom.append(pPrice);
+    listDom.append(pAmount);
+    listDom.append(divList);
+           
+    listDom.id=cartProducts.length ;
+    list.appendChild(listDom);
        
          
 
