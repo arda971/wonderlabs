@@ -14,8 +14,8 @@ function add_to_cart(){
     console.log('val',prdName.value);
 
 
-    var newItemIndex;
-    var newItem=cartProducts.find(isAdded,this);
+    let newItemIndex;
+    let newItem=cartProducts.find(isAdded,this);
     
 
     function isAdded(item,index) { 
@@ -29,7 +29,7 @@ function add_to_cart(){
 
 
 
-  	 newItem.quantity+=prdQuantity.value;
+  	 newItem.quantity+=parseInt(prdQuantity.value);
   	 cartProducts[newItemIndex]=newItem;
 
   	 console.log('up products',cartProducts);
