@@ -29,7 +29,7 @@ function add_to_cart(){
 
 
 
-  	 newItem.quantity+=parseInt(prdQuantity.value);
+  	 newItem.quantity= parseInt(newItem.quantity)+ parseInt(prdQuantity.value);
   	 cartProducts[newItemIndex]=newItem;
 
   	 console.log('up products',cartProducts);
