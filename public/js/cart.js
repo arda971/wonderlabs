@@ -18,7 +18,7 @@ function add_to_cart(){
     var newItem=cartProducts.find(isAdded,this);
     
 
-    isAdded=(item,index)=> { 
+    function isAdded(item,index) { 
     newItemIndex=index;	
     return item.name === prdName.value;
 
