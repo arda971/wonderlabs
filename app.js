@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var auth = require('./routes/auth');
 
 var passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+//const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
 
 
@@ -110,20 +110,20 @@ app.get('/users ', accessProtectionMiddleware, (req, res) => {
 
 /* GOOGLE ROUTER*/
 
-app.get('/auth/google', passport.authenticate('google'));
+//app.get('/auth/google', passport.authenticate('google'));
 
 // This is where Google sends users once they authenticate with Google
 // Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/', session: true }),
-  (req, res) => {
+//app.get('/auth/google/callback',
+ // passport.authenticate('google', { failureRedirect: '/', session: true }),
+  //(req, res) => {
   //  console.log('wooo we authenticated, here is our user object:', req.user);
 
     //res.json(req.user);
-    req.session.save();
-    res.redirect('/');
-  }
-);
+    //req.session.save();
+    //res.redirect('/');
+ // }
+//);
 
 
 

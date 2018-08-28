@@ -20,7 +20,16 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
 
 
+// This will tell passport what to put into client-side cookies
+// We are just saving the entire user object for this tutorial
+// Normally, we'd usually want to save just a user_id
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
 
+passport.deserializeUser((userDataFromCookie, done) => {
+  done(null, userDataFromCookie);
+});
 
 
 
@@ -95,6 +104,24 @@ function(accessToken, refreshToken, profile, done) {
 router.get('/login', function(req, res, next) {
   res.render('login', { title: 'Please Sign In with:' });
 });
+
+
+/*Google*/
+router.get('/auth/google', passport.authenticate('google'));
+
+// This is where Google sends users once they authenticate with Google
+// Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/auth/login'}),
+  (req, res) => {
+  //  console.log('wooo we authenticated, here is our user object:', req.user);
+
+    //res.json(req.user);
+    req.session.save();
+    res.redirect('/');
+  }
+);
+
 
 /* FACEBOOK ROUTER */
 router.get('/facebook',
