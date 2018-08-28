@@ -13,8 +13,10 @@ function add_to_cart(){
     console.log(prdName);
     console.log('val',prdName.value);
 
-    let newItem=cartProducts.find(isAdded,this);
+
     var newItemIndex;
+    var newItem=cartProducts.find(isAdded,this);
+    
 
     isAdded=(item,index)=> { 
     newItemIndex=index;	
@@ -25,17 +27,23 @@ function add_to_cart(){
 
   if(newItem){
 
+
+
   	 newItem.quantity+=prdQuantity.value;
   	 cartProducts[newItemIndex]=newItem;
 
+  	 console.log('up products',cartProducts);
+
   } else{
+
+  	
 
   	  	cartProducts.push({name:prdName.value,
   		description:prdDescription.value,
   		price:prdPrice.value,
   		quantity:prdQuantity.value
   	});
-
+console.log('new products',cartProducts);
   }
 
 
@@ -79,7 +87,7 @@ function add_to_cart(){
 
     
 
-    console.log('add products',cartProducts);
+    
 
 }
 
