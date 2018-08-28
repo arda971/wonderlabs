@@ -1,23 +1,14 @@
-var express = require('express');
-var router = express.Router();
-//const passportFacebook = require('../controller/facebookAuth');
-//const passportGoogle = require('../controller/googleAuth');
+const express = require('express');
+const router = express.Router();
 const User = require('../models/Users');
 const Projects = require('../models/Projects');
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-
-
-
-
-
-
-
-var passport = require('passport');
+const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
-var LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
+const LocalStrategy = require('passport-local').Strategy; /* this should be after passport*/
 
 
 // This will tell passport what to put into client-side cookies

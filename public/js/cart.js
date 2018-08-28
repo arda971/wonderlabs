@@ -1,7 +1,8 @@
 
+let cartProducts=[];
 
 function add_to_cart(){
-    let cartProducts=[];
+    
     let list = document.getElementById('list');
     let prdName = document.getElementById('prdName');
     let prdDescription = document.getElementById('prdDescription');
@@ -11,6 +12,14 @@ function add_to_cart(){
 
     console.log(prdName);
     console.log('val',prdName.value);
+
+    function isAdded(item) { 
+    return item.name === prdName.value;
+   }
+
+    
+    
+console.log(cartProducts.find(isAdded)); 
 
 
   	cartProducts.push({name:prdName.value,
