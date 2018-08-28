@@ -107,11 +107,11 @@ router.get('/login', function(req, res, next) {
 
 
 /*Google*/
-router.get('/auth/google', passport.authenticate('google'));
+router.get('/google', passport.authenticate('google'));
 
 // This is where Google sends users once they authenticate with Google
 // Make sure this endpoint matches the "callbackURL" from step 4.2 and the "authorized redirect URI" from Step 3
-router.get('/auth/google/callback',
+router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/auth/login'}),
   (req, res) => {
   //  console.log('wooo we authenticated, here is our user object:', req.user);

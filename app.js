@@ -79,6 +79,7 @@ app.use('/auth', auth);
 // This will tell passport what to put into client-side cookies
 // We are just saving the entire user object for this tutorial
 // Normally, we'd usually want to save just a user_id
+/*
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -86,6 +87,10 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((userDataFromCookie, done) => {
   done(null, userDataFromCookie);
 });
+
+*/
+
+
 
 /*
 // Checks if a user is logged in
