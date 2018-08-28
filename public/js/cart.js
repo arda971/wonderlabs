@@ -39,9 +39,7 @@ function add_to_cart(){
   	 console.log('up products',cartProducts,'line',upElt);
 
 
-  } else{
-
-  	
+  } else{ 	
 
   	  	cartProducts.push({name:prdName.value,
   		description:prdDescription.value,
@@ -50,23 +48,22 @@ function add_to_cart(){
   	});
 
 
-     let listDom=document.createElement('li');
+    let listDom=document.createElement('li');
     let divList=document.createElement('div');
-
     let pDelete=document.createElement('p');
     let pDesc=document.createElement('p');
     let pPrice=document.createElement('p');
     let pAmount=document.createElement('p');
+
     let listDomText= document.createTextNode=prdName.value;
     let pDescText= document.createTextNode='Description : '+prdDescription.value;
     let pPriceText= document.createTextNode='$ '+prdPrice.value;
-    let pAmountText= document.createTextNode='Quanity : '+prdQuantity.value;
-  
+    let pAmountText= document.createTextNode='Quanity : '+prdQuantity.value;  
     let pDeleteText= document.createTextNode="Delete";
 
             
  
-    pDelete.append(spanDeleteText);    
+    pDelete.append(pDeleteText);    
     pDesc.append(pDescText);
     pPrice.append(pPriceText);
     pAmount.append(pAmountText);
@@ -80,10 +77,7 @@ function add_to_cart(){
     listDom.id=cartProducts.length ;
     list.appendChild(listDom);
        
-         
-
-
-console.log('new products',cartProducts);
+    console.log('new products',cartProducts);
   }
 
 
