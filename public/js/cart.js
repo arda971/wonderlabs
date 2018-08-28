@@ -35,7 +35,7 @@ function add_to_cart(){
   	 let upElt=document.getElementById('qte'+(newItemIndex+1));
 
      upElt.innerText=newItem.quantity;
-     
+
   	 console.log('up products',cartProducts,'line',upElt);
 
 
@@ -95,7 +95,14 @@ console.log('new products',cartProducts);
          list.addEventListener('click',function(){
          
              if(event.target.innerText==="Delete"){
-                    console.log("delete"); 
+             	let index = parrseInt(event.target.parentNode.id);
+
+             	cartProducts.splice(index, 1);
+
+             	event.target.parentNode.remove();
+             	
+                console.log("delete", event); 
+
              }
              
             
