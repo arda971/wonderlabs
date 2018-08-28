@@ -95,12 +95,12 @@ console.log('new products',cartProducts);
          list.addEventListener('click',function(){
          
              if(event.target.innerText==="Delete"){
-             	let index = parrseInt(event.target.parentNode.id);
+             	let index = parseInt(event.target.parentNode.id);
 
              	cartProducts.splice(index, 1);
 
              	event.target.parentNode.remove();
-             	
+
                 console.log("delete", event); 
 
              }
