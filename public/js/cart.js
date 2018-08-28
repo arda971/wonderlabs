@@ -13,20 +13,33 @@ function add_to_cart(){
     console.log(prdName);
     console.log('val',prdName.value);
 
-    function isAdded(item) { 
+    let newItem=cartProducts.find(isAdded);
+    let newItemIndex;
+
+    function isAdded(item,index) { 
+    newItemIndex=index;	
     return item.name === prdName.value;
+
    }
 
-    
-    
-console.log(cartProducts.find(isAdded)); 
 
+  if(newItem){
 
-  	cartProducts.push({name:prdName.value,
+  	 newItem.quantity+=prdQuantity.value;
+  	 cartProducts[newItemIndex]=newItem;
+
+  } else{
+
+  	  	cartProducts.push({name:prdName.value,
   		description:prdDescription.value,
   		price:prdPrice.value,
   		quantity:prdQuantity.value
   	});
+
+  }
+
+
+
 
 
     let listDom=document.createElement('li');
