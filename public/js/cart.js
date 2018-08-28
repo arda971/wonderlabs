@@ -13,10 +13,10 @@ function add_to_cart(){
     console.log(prdName);
     console.log('val',prdName.value);
 
-    let newItem=cartProducts.find(isAdded);
-    let newItemIndex;
+    let newItem=cartProducts.find(isAdded,this);
+    var newItemIndex;
 
-    function isAdded(item,index) { 
+    isAdded=(item,index)=> { 
     newItemIndex=index;	
     return item.name === prdName.value;
 
