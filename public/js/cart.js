@@ -97,11 +97,13 @@ console.log('new products',cartProducts);
              if(event.target.innerText==="Delete"){
              	let index = parseInt(event.target.parentNode.id);
 
+             	 console.log("delete", event.target.parentNode); 
+             	 	
              	cartProducts.splice(index, 1);
 
              	event.target.parentNode.remove();
 
-                console.log("delete", event); 
+               
 
              }
              
