@@ -34,6 +34,8 @@ function add_to_cart(){
 
   	 let upElt=document.getElementById('qte'+(newItemIndex+1));
 
+     upElt.innerText=newItem.quantity;
+     
   	 console.log('up products',cartProducts,'line',upElt);
 
 
@@ -50,22 +52,21 @@ function add_to_cart(){
 
      let listDom=document.createElement('li');
     let divList=document.createElement('div');
-    let spanEdit=document.createElement('span');
+
     let spanDelete=document.createElement('span');
     let pDesc=document.createElement('p');
     let pPrice=document.createElement('p');
     let pAmount=document.createElement('p');
     let listDomText= document.createTextNode=prdName.value;
-    let pDescText= document.createTextNode=prdDescription.value;
-    let pPriceText= document.createTextNode=prdPrice.value;
-    let pAmountText= document.createTextNode=prdQuantity.value;
-    let spanEditText= document.createTextNode="Edit";
+    let pDescText= document.createTextNode='Description : '+prdDescription.value;
+    let pPriceText= document.createTextNode='$ '+prdPrice.value;
+    let pAmountText= document.createTextNode='Quanity : '+prdQuantity.value;
+  
     let spanDeleteText= document.createTextNode="Delete";
 
             
-    spanEdit.append(spanEditText);
+ 
     spanDelete.append(spanDeleteText);
-    divList.append(spanEdit);
     divList.append(spanDelete);
     divList.className="te";
     pDesc.append(pDescText);
@@ -92,13 +93,11 @@ console.log('new products',cartProducts);
 
 
          list.addEventListener('click',function(){
-             if(event.target.innerText==="Edit"){
-                    console.log("edit"); 
-             }
+         
              if(event.target.innerText==="Delete"){
                     console.log("delete"); 
              }
-             event.target.className="checked";
+             
             
          });
 
