@@ -53,7 +53,7 @@ function add_to_cart(){
      let listDom=document.createElement('li');
     let divList=document.createElement('div');
 
-    let spanDelete=document.createElement('span');
+    let pDelete=document.createElement('p');
     let pDesc=document.createElement('p');
     let pPrice=document.createElement('p');
     let pAmount=document.createElement('p');
@@ -62,13 +62,11 @@ function add_to_cart(){
     let pPriceText= document.createTextNode='$ '+prdPrice.value;
     let pAmountText= document.createTextNode='Quanity : '+prdQuantity.value;
   
-    let spanDeleteText= document.createTextNode="Delete";
+    let pDeleteText= document.createTextNode="Delete";
 
             
  
-    spanDelete.append(spanDeleteText);
-    divList.append(spanDelete);
-    divList.className="te";
+    pDelete.append(spanDeleteText);    
     pDesc.append(pDescText);
     pPrice.append(pPriceText);
     pAmount.append(pAmountText);
@@ -76,8 +74,8 @@ function add_to_cart(){
     listDom.append(listDomText);
     listDom.append(pDesc);
     listDom.append(pPrice);
-    listDom.append(pAmount);
-    listDom.append(divList);
+    listDom.append(pAmount);    
+    listDom.append(pDelete);
            
     listDom.id=cartProducts.length ;
     list.appendChild(listDom);
@@ -98,7 +96,7 @@ console.log('new products',cartProducts);
              	let index = parseInt(event.target.parentNode.id);
 
              	 console.log("delete", event.target.parentNode); 
-             	 	
+
              	cartProducts.splice(index, 1);
 
              	event.target.parentNode.remove();
