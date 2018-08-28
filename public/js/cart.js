@@ -43,18 +43,19 @@ function add_to_cart(){
   		price:prdPrice.value,
   		quantity:prdQuantity.value
   	});
-console.log('new products',cartProducts);
-  }
 
 
-
-
-
-    let listDom=document.createElement('li');
+     let listDom=document.createElement('li');
     let divList=document.createElement('div');
     let spanEdit=document.createElement('span');
     let spanDelete=document.createElement('span');
-    let listDomText= document.createTextNode=prdDescription.value;
+    let pDesc=document.createElement('p');
+    let pPrice=document.createElement('p');
+    let pAmount=document.createElement('p');
+    let listDomText= document.createTextNode=prdName.value;
+    let pDescText= document.createTextNode=prdDescription.value;
+    let pPriceText= document.createTextNode=prdPrice.value;
+    let pAmountText= document.createTextNode=prdQuantity.value;
     let spanEditText= document.createTextNode="Edit";
     let spanDeleteText= document.createTextNode="Delete";
             
@@ -64,12 +65,24 @@ console.log('new products',cartProducts);
             divList.append(spanDelete);
             divList.className="te";
             listDom.append(listDomText);
+            listDom.append(pDesc);
+            listDom.append(pPrice);
+            listDom.append(pAmount);
             listDom.append(divList);
             
             listDom.id=cartProducts.length ;
             list.appendChild(listDom);
        
          
+
+
+console.log('new products',cartProducts);
+  }
+
+
+
+
+
          list.addEventListener('click',function(){
              if(event.target.innerText==="Edit"){
                     console.log("edit"); 
