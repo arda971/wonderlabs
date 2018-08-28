@@ -64,7 +64,8 @@ function add_to_cart(){
             
  
     pDelete.append(pDeleteText);
-    pDelete.ClassName='btn btn-danger';    
+    pDelete.className='btn btn-danger';  
+    
     pDesc.append(pDescText);
     pPrice.append(pPriceText);
     pAmount.append(pAmountText);
