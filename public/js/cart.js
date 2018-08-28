@@ -87,7 +87,7 @@ function add_to_cart(){
          list.addEventListener('click',function(){
          
              if(event.target.innerText==="Delete"){
-             	let index = parseInt(event.target.parentNode.id);
+             	let index = parseInt(event.target.parentNode.id)-1;
 
              	 console.log("delete", event.target.parentNode); 
 
@@ -95,7 +95,7 @@ function add_to_cart(){
 
              	event.target.parentNode.remove();
 
-               
+               console.log('delete products',cartProducts);
 
              }
              
