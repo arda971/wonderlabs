@@ -52,14 +52,26 @@ function add_to_cart(){
 
   
     
-     
+    if(ico.value.length<1){
+
+     ico.value=JSON.stringify(
+         {name:prdName.value,
+      description:prdDescription.value,
+      price:prdPrice.value,
+      quantity:prdQuantity.value
+    })
+   }else{
+
+        
      ico.value=ico.value+';'+JSON.stringify(
          {name:prdName.value,
       description:prdDescription.value,
       price:prdPrice.value,
       quantity:prdQuantity.value
     }
-      );
+      )
+   }
+
  
      
 
