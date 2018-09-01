@@ -193,16 +193,42 @@ router.get('/addcostproject/:id', accessProtectionMiddleware,function(req, res, 
            Products.find(function (err, products) {
              if (err) next(err) ;
              console.log('products list',products);
-             var product={
-               name:'test',
-               description:'test',
-               price:10
-               
-
-             }
-              res.render('addCosts', { title: 'Add Costs  Project ', project:req.params.id, products:products, product:product, errors: req.session.messages || []});
+        
+              res.render('addCosts', { title: 'Add Costs  Project ', project:req.params.id, products:products, errors: req.session.messages || []});
 
     });
+});
+
+
+router.post('/addcostproject/:id', accessProtectionMiddleware,function(req, res, next) {
+
+          req.body.cart.forEach((item)=>{
+
+                  Products.findOrCreate({ name: item.name }, item, (err,cost,created)=>{
+
+                           console.log('cost created',created,'cost',cost);
+                                if(created){
+
+                                   
+                             Projects.findById({_id:req.params.id}, function (err, project) {
+                              console.log('edit project',project);
+
+                                    project.costs.push({product:cost._id,quantity:item.quantity});
+
+                                    console.log('projrct add cost',project);
+
+                                });
+
+
+
+                                   }
+
+
+                              });
+
+          });  
+
+
 });
 
 
