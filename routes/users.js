@@ -204,8 +204,8 @@ router.post('/addcostproject/:id', accessProtectionMiddleware,function(req, res,
 
       console.log('add cost ', req.body.cart);
 
-      let ct=""+req.body.cart;
-       let cart=ct.explode(';');
+   
+       let cart=req.body.cart.split(';');
 
           cart.forEach((ite)=>{
 
