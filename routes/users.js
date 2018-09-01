@@ -157,12 +157,12 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
 
 
       Projects.findById({_id:req.params.id}, function (err, project) {
-        project.populate();
+
        console.log('edit project',project);
         res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
         req.session.messages = [];
 
-});
+}).populate('product');
 
 });
 
