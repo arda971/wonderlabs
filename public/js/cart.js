@@ -8,7 +8,7 @@ function add_to_cart(){
     let prdDescription = document.getElementById('prdDescription');
     let prdPrice = document.getElementById('prdPrice');
     let prdQuantity = document.getElementById('prdQuantity');
-    let foc = document.getElementById('foc');
+    let ico = document.getElementById('ico');
 
 
     console.log(prdName);
@@ -51,10 +51,12 @@ function add_to_cart(){
 
 
   
-     let ico=document.createElement('input');
+    
      
      ico.value=cartProducts;
-     ico.id='ico';
+     
+
+     
 
     let listDom=document.createElement('li');
     let divList=document.createElement('div');
