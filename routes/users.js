@@ -210,7 +210,7 @@ router.post('/addcostproject/:id', accessProtectionMiddleware,function(req, res,
 
           cart.forEach((ite)=>{
 
-              let item = ite.JSON.parse(ite);
+              let item = JSON.parse(ite);
                console.log('ite',ite,'item',item);
 
                   Products.findOrCreate({ name: item.name }, item, (err,cost,created)=>{
