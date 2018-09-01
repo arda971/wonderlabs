@@ -202,14 +202,16 @@ router.get('/addcostproject/:id', accessProtectionMiddleware,function(req, res, 
 
 router.post('/addcostproject/:id', accessProtectionMiddleware,function(req, res, next) {
 
-      console.log('add cost ', req.body.cart);
+      
 
    
        let cart=req.body.cart.split(';');
+       console.log('add cost ', req.body.cart,'cart array',cart);
 
           cart.forEach((ite)=>{
 
               let item = ite.JSON.parse(ite);
+               console.log('ite',ite,'item',item);
 
                   Products.findOrCreate({ name: item.name }, item, (err,cost,created)=>{
 
