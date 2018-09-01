@@ -156,13 +156,20 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
       console.log('edit project id',req.params.id);
 
 
-      Projects.findById({_id:req.params.id}, function (err, project) {
+  /*    Projects.findById({_id:req.params.id}, function (err, project) {
 
        console.log('edit project',project);
         res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
         req.session.messages = [];
 
-}).populate('product');
+});*/
+
+      Projects.findById({_id:req.params.id})
+    .populate('project').exec((err, project) => {
+             console.log('edit project',project);
+        res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
+        req.session.messages = [];
+    })
 
 });
 
