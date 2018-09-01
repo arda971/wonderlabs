@@ -8,6 +8,7 @@ function add_to_cart(){
     let prdDescription = document.getElementById('prdDescription');
     let prdPrice = document.getElementById('prdPrice');
     let prdQuantity = document.getElementById('prdQuantity');
+    let foc = document.getElementById('foc');
 
 
     console.log(prdName);
@@ -39,6 +40,7 @@ function add_to_cart(){
   	 console.log('up products',cartProducts,'line',upElt);
 
 
+
   } else{ 	
 
   	  	cartProducts.push({name:prdName.value,
@@ -47,6 +49,12 @@ function add_to_cart(){
   		quantity:prdQuantity.value
   	});
 
+
+  
+     let ico=document.createElement('input');
+     
+     ico.value=cartProducts;
+     ico.id='ico';
 
     let listDom=document.createElement('li');
     let divList=document.createElement('div');
