@@ -30,7 +30,7 @@ const ProjectSchema = new mongoose.Schema({
   status:{type: String, required: true, enum: ['created', 'assigned', 'complete','paid','closed'], default: 'created'},
   costs: [{
   product: {
-    type: mongoose.Schema.Types.ObjectId
+    type: mongoose.Schema.Types.ObjectId,ref:'Product'
   },
   quantity: {
     type: Number,
