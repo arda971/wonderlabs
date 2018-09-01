@@ -215,8 +215,8 @@ router.post('/addcostproject/:id', accessProtectionMiddleware,function(req, res,
 
                   Products.findOrCreate({ name: item.name }, item, (err,cost,created)=>{
 
-                           console.log('cost created',created,'cost',cost);
-                                if(created){
+                           console.log('cost',cost);
+                              
 
                                    
                              Projects.findById({_id:req.params.id}, function (err, project) {
@@ -224,13 +224,21 @@ router.post('/addcostproject/:id', accessProtectionMiddleware,function(req, res,
 
                                     project.costs.push({product:cost._id,quantity:item.quantity});
 
-                                    console.log('projrct add cost',project);
+                                    console.log('project add cost',project);
+
+                                      Projects.findByIdAndUpdate({_id:req.params.id}, project, function (err, project) {
+
+                                                          console.log('project update',project);
+                                                          res.redirect('/users/projects');
+
+
+                                            });
 
                                 });
 
 
 
-                                   }
+                                 
 
 
                               });
