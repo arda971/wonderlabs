@@ -10,7 +10,6 @@ const ProductSchema = new mongoose.Schema({
       required: true,
     },
   description:String,
-  status:{type: String, required: true, enum: ['Approved', 'Not Approved'], default: 'Not Approved'},
   updated_at: { type: Date, default: Date.now }
 
 });

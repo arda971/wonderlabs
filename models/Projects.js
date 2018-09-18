@@ -36,7 +36,8 @@ const ProjectSchema = new mongoose.Schema({
     type: Number,
     default: 1,
     min: 1
-  }
+  },
+  status:{type: String, required: true, enum: ['Approved', 'Not Approved'], default: 'Not Approved'},
  }],
  comments:[commentSchema],
 
