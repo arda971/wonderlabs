@@ -156,16 +156,10 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
       console.log('edit project id',req.params.id);
 
 
-  /*    Projects.findById({_id:req.params.id}, function (err, project) {
-
-       console.log('edit project',project);
-        res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
-        req.session.messages = [];
-
-});*/
-
       Projects.findById({_id:req.params.id})
     .populate('project').exec((err, project) => {
+             
+             project.populate({ path: 'costs.product', model: 'Product' });
              console.log('edit project',project);
         res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
         req.session.messages = [];
