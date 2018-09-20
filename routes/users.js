@@ -206,7 +206,7 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
     .populate({ path: 'costs.product', model: 'Product' }).exec((err, project) => {
              
              
-             console.log('edit project populate',project.costs[0].product);
+           //  console.log('edit project populate',project.costs[0].product);
         res.render('editProject', { title: 'Update  Project Info', project:project, moment:moment, errors: req.session.messages || []});
         req.session.messages = [];
     })
