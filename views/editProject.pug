@@ -23,6 +23,11 @@ block content
           div.form-group
             label Type:
             input.form-control(name='type',value=project.type)
+      
+          ul
+          each val in project.costs
+           li:  #{val.tittle}
+
 
           div.form-actions
             a.btn.btn-danger(href='/users/deleteproject/'+project._id) Delete
