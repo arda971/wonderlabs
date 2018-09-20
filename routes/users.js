@@ -141,7 +141,53 @@ router.post('/newProject', accessProtectionMiddleware,function(req, res, next) {
 	   console.log('project created',created,'project',project);
            if(created){
 
-		res.redirect('/users/projects');
+		
+ 
+  Projects.find({ userid: req.user._id }, (err, projects)=> {
+
+        let created=0;
+        let assigned=0;
+        let completed=0;
+        let tmpProjects=[];
+
+
+
+        
+
+        projects.forEach((item)=>{
+
+              if(item.status==="created") created++;
+             if(item.status==="assigned") assigned++;
+             if(item.status==="completed") completed++;
+
+             let tmp={};
+             tmp._id=item._id;
+             tmp.tittle=item.tittle;
+             tmp.status=item.status;
+             tmpProjects.push(tmp);
+
+
+          });
+
+        req.user.stats.projects=tmpProjects;
+        req.user.stats.created=created;
+        req.user.stats.assigned=assigned;
+        req.user.stats.completed=completed;
+
+        console.log('user lgin',req.user);
+
+            req.session.save((err) => {
+      if (err) {
+          return next(err);
+      }
+
+
+
+      res.redirect('/users/projects');
+  });
+
+
+  });
 		}
 
 
