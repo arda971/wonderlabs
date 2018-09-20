@@ -157,7 +157,7 @@ router.get('/project/:id', accessProtectionMiddleware,function(req, res, next) {
 
 
       Projects.findById({_id:req.params.id})
-    .populate({ path: 'costs.product', model: 'Products' }).exec((err, project) => {
+    .populate({ path: 'costs.product', model: 'Product' }).exec((err, project) => {
              
              
              console.log('edit project populate',project);
